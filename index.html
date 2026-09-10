@@ -3,12 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>India Tokenization & Regulatory Sandbox Radar | Institutional Terminal</title>
+  <meta name="theme-color" content="#070B12" />
+  <meta name="description" content="India Tokenization & DLT Regulatory Radar — institutional market intelligence terminal." />
+  <title>India Tokenization & DLT Regulatory Radar | Institutional Terminal</title>
+
   <script src="https://cdn.tailwindcss.com"></script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  
+
   <script>
     tailwind.config = {
       theme: {
@@ -29,584 +33,1788 @@
           }
         }
       }
-    }
+    };
   </script>
 
   <style>
-    ::-webkit-scrollbar { width: 6px; height: 6px; }
-    ::-webkit-scrollbar-track { background: #0D1321; }
-    ::-webkit-scrollbar-thumb { background: #1E2F4D; border-radius: 3px; }
-    ::-webkit-scrollbar-thumb:hover { background: #2A436C; }
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-width: 320px;
+    }
+
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #0D1321;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #1E2F4D;
+      border-radius: 999px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #2A436C;
+    }
+
+    ::selection {
+      background: rgba(6, 182, 212, 0.20);
+      color: #a5f3fc;
+    }
+
+    .mark-highlight {
+      background: rgba(6, 182, 212, 0.22);
+      color: #67e8f9;
+      padding: 0 2px;
+      border-radius: 3px;
+    }
+
+    .terminal-grid {
+      background-image:
+        linear-gradient(rgba(30, 47, 77, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(30, 47, 77, 0.08) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    .glass {
+      background: rgba(13, 19, 33, 0.72);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .focus-ring:focus-visible {
+      outline: 2px solid rgba(34, 211, 238, 0.8);
+      outline-offset: 2px;
+    }
+
+    .table-row-highlight {
+      animation: rowFlash 1.5s ease-out;
+    }
+
+    @keyframes rowFlash {
+      0% {
+        background: rgba(6, 182, 212, 0.16);
+      }
+      100% {
+        background: transparent;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
   </style>
 </head>
-<body class="bg-brand-950 text-slate-200 font-sans antialiased min-h-screen flex flex-col selection:bg-cyan-500/20 selection:text-cyan-300">
 
-  <!-- Top Institutional Bar -->
-  <div class="border-b border-brand-800/80 bg-brand-900/60 px-4 py-2 text-xs text-slate-400">
-    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
-      <div class="flex items-center gap-2">
-        <span class="flex h-2 w-2 relative">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+<body class="bg-brand-950 text-slate-200 font-sans antialiased min-h-screen flex flex-col">
+
+  <!-- =========================================================
+       TOP INSTITUTIONAL BAR
+  ========================================================== -->
+  <div class="border-b border-brand-800/80 bg-brand-900/90 px-4 py-2.5">
+    <div class="w-full max-w-[1600px] mx-auto flex flex-wrap justify-between items-center gap-2">
+
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="flex h-2 w-2 relative shrink-0" aria-hidden="true">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-60"></span>
           <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
         </span>
-        <span class="font-medium text-slate-300 tracking-wide">MARKET INTELLIGENCE TERMINAL</span>
-        <span class="text-brand-700">|</span>
-        <span class="text-slate-400">Jurisdiction: Republic of India</span>
+
+        <span class="font-medium text-slate-300 tracking-wide font-mono text-[10px] sm:text-[11px] truncate">
+          MARKET INTELLIGENCE TERMINAL
+        </span>
+
+        <span class="hidden sm:inline text-brand-700">|</span>
+
+        <span class="hidden sm:inline text-slate-500 text-[11px]">
+          Jurisdiction: Republic of India
+          <span class="text-slate-600">(RBI • SEBI • IFSCA)</span>
+        </span>
       </div>
-      <div class="flex items-center gap-4 text-[11px] font-mono text-slate-400">
-        <span>RBI • SEBI • IFSCA GIFT CITY</span>
-        <span class="text-emerald-400 font-medium">LIVE REPOSITORY</span>
+
+      <div class="flex items-center gap-3 sm:gap-4 text-[10px] sm:text-[11px] font-mono">
+        <span class="hidden sm:inline text-slate-600">TERMINAL TIME:</span>
+
+        <time id="terminal-clock" class="text-slate-300" aria-label="Current Indian Standard Time">
+          --:--:-- IST
+        </time>
+
+        <span class="text-brand-700">|</span>
+
+        <span class="text-emerald-400 font-medium flex items-center gap-1.5">
+          <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+          ACTIVE REGISTRY
+        </span>
       </div>
     </div>
   </div>
 
-  <!-- Primary Header -->
-  <header class="border-b border-brand-800/60 bg-gradient-to-b from-brand-900/80 to-brand-950 px-4 sm:px-8 py-8">
-    <div class="max-w-7xl mx-auto">
-      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-        <div>
-          <div class="flex items-center gap-2 mb-2">
-            <span class="px-2.5 py-0.5 rounded text-[11px] font-semibold tracking-wider uppercase bg-cyan-950 text-cyan-300 border border-cyan-800/60 font-mono">
-              Regulatory Sandbox Monitor
+
+  <!-- =========================================================
+       PRIMARY HEADER
+  ========================================================== -->
+  <header class="relative overflow-hidden border-b border-brand-800/60 bg-gradient-to-b from-brand-900/90 to-brand-950 px-4 sm:px-8 py-7 sm:py-9 terminal-grid">
+
+    <div class="absolute inset-0 pointer-events-none bg-gradient-to-r from-cyan-500/[0.025] via-transparent to-purple-500/[0.025]"></div>
+
+    <div class="relative w-full max-w-[1600px] mx-auto">
+
+      <div class="flex flex-col xl:flex-row xl:items-center justify-between gap-7">
+
+        <!-- Brand -->
+        <div class="min-w-0">
+
+          <div class="flex flex-wrap items-center gap-2 mb-3">
+
+            <span class="px-2.5 py-1 rounded-md text-[10px] sm:text-[11px] font-semibold tracking-wider uppercase bg-cyan-950/80 text-cyan-300 border border-cyan-800/60 font-mono">
+              Regulatory Sandbox & DLT Monitor
             </span>
+
+            <span class="px-2.5 py-1 rounded-md text-[10px] font-mono text-slate-400 bg-brand-850/80 border border-brand-800">
+              PRIMARY-SOURCE INDEX
+            </span>
+
           </div>
-          <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white">
+
+          <h1 class="text-2xl sm:text-3xl lg:text-4xl xl:text-[42px] font-bold tracking-tight text-white leading-tight">
             India Tokenization & DLT Radar
           </h1>
-          <p class="mt-2 text-sm text-slate-400 max-w-2xl leading-relaxed">
-            Institutional ledger of asset tokenization, DLT debt securities, and wholesale CBDC settlement pilots authorized under regulatory sandbox frameworks.
+
+          <p class="mt-2.5 text-sm text-slate-400 max-w-3xl leading-relaxed">
+            Institutional ledger of asset tokenization, distributed financial-market infrastructure,
+            debt-token initiatives, and wholesale CBDC settlement activity across India's principal
+            financial regulators.
           </p>
+
+          <div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-[10px] font-mono text-slate-500">
+            <span class="flex items-center gap-1.5">
+              <span class="h-1.5 w-1.5 rounded-full bg-cyan-400"></span>
+              RBI
+            </span>
+
+            <span class="flex items-center gap-1.5">
+              <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+              SEBI
+            </span>
+
+            <span class="flex items-center gap-1.5">
+              <span class="h-1.5 w-1.5 rounded-full bg-purple-400"></span>
+              IFSCA
+            </span>
+
+            <span class="text-brand-700">|</span>
+
+            <span>PUBLIC-SOURCE INTELLIGENCE</span>
+          </div>
+
         </div>
 
-        <!-- Terminal Quick Actions -->
-        <div class="flex items-center gap-3">
-          <button onclick="copyOrDownload()" id="export-btn" class="px-3.5 py-2 rounded-lg bg-brand-850 hover:bg-brand-800 text-slate-200 border border-brand-700/60 text-xs font-medium font-mono flex items-center gap-2 transition-all shadow-sm">
-            <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/>
+
+        <!-- Quick Actions -->
+        <div class="flex flex-wrap items-center gap-2.5 shrink-0">
+
+          <button
+            type="button"
+            id="export-btn"
+            onclick="exportLedger()"
+            class="focus-ring px-3.5 py-2.5 rounded-lg bg-brand-850 hover:bg-brand-800 active:bg-brand-700 text-slate-200 border border-brand-700/60 text-[11px] font-medium font-mono flex items-center gap-2 transition-all shadow-sm"
+            aria-label="Export the full institutional ledger as CSV"
+          >
+            <svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 3v12m0 0l4-4m-4 4l-4-4M5 21h14a2 2 0 002-2v-3M3 16v3a2 2 0 002 2"/>
             </svg>
-            <span id="export-text">Export / Copy Data</span>
+
+            <span id="export-text">Export Ledger</span>
           </button>
-          <a href="mailto:intelligence@fintechindia.org?subject=Submit Regulatory Sandbox Pilot" class="px-3.5 py-2 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-brand-950 text-xs font-semibold tracking-tight transition-all shadow-sm">
-            + Submit Pilot
+
+          <a
+            href="https://github.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="focus-ring px-3.5 py-2.5 rounded-lg bg-brand-800 hover:bg-brand-700 text-slate-200 border border-brand-700/80 text-[11px] font-medium font-mono flex items-center gap-2 transition-all shadow-sm"
+          >
+            <svg class="w-3.5 h-3.5 text-cyan-400" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+
+            <span>Audit / Submit Data</span>
           </a>
+
         </div>
+
       </div>
 
-      <!-- Institutional Metrics Strip -->
+
+      <!-- =====================================================
+           METRICS
+      ====================================================== -->
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-8">
-        <div class="bg-brand-900/60 border border-brand-800/70 p-4 rounded-xl">
-          <span class="text-[11px] font-medium tracking-wide uppercase text-slate-400">Total Tracked Initiatives</span>
+
+        <button
+          type="button"
+          onclick="resetAllFilters()"
+          class="focus-ring text-left bg-brand-900/65 hover:bg-brand-850/70 border border-brand-800/70 hover:border-brand-700 p-4 rounded-xl transition-all"
+        >
+          <span class="text-[10px] sm:text-[11px] font-medium tracking-wide uppercase text-slate-400">
+            Total Tracked Initiatives
+          </span>
+
           <div class="mt-2 flex items-baseline gap-2">
-            <span id="stat-total" class="text-3xl font-bold font-mono text-white">0</span>
-            <span class="text-xs text-slate-500 font-mono">PILOTS</span>
+            <span id="stat-total" class="text-2xl sm:text-3xl font-bold font-mono text-white">0</span>
+            <span class="text-[9px] sm:text-xs text-slate-500 font-mono">INITIATIVES</span>
           </div>
-        </div>
-        <div class="bg-brand-900/60 border border-brand-800/70 p-4 rounded-xl">
+        </button>
+
+
+        <button
+          type="button"
+          onclick="setFilter('RBI')"
+          class="focus-ring text-left bg-brand-900/65 hover:bg-brand-850/70 border border-brand-800/70 hover:border-blue-700/70 p-4 rounded-xl transition-all"
+        >
           <div class="flex justify-between items-center">
-            <span class="text-[11px] font-medium tracking-wide uppercase text-blue-400">RBI Core Pilots</span>
+            <span class="text-[10px] sm:text-[11px] font-medium tracking-wide uppercase text-blue-400">
+              RBI Cohorts & Rails
+            </span>
+
             <span class="h-1.5 w-1.5 rounded-full bg-blue-400"></span>
           </div>
+
           <div class="mt-2 flex items-baseline gap-2">
-            <span id="stat-rbi" class="text-3xl font-bold font-mono text-white">0</span>
-            <span class="text-xs text-blue-400/70 font-mono">UMI / CBDC / COHORTS</span>
+            <span id="stat-rbi" class="text-2xl sm:text-3xl font-bold font-mono text-white">0</span>
+            <span class="text-[9px] sm:text-xs text-blue-400/70 font-mono">TRACKED</span>
           </div>
-        </div>
-        <div class="bg-brand-900/60 border border-brand-800/70 p-4 rounded-xl">
+        </button>
+
+
+        <button
+          type="button"
+          onclick="setFilter('SEBI')"
+          class="focus-ring text-left bg-brand-900/65 hover:bg-brand-850/70 border border-brand-800/70 hover:border-emerald-700/70 p-4 rounded-xl transition-all"
+        >
           <div class="flex justify-between items-center">
-            <span class="text-[11px] font-medium tracking-wide uppercase text-emerald-400">SEBI Sandbox</span>
+            <span class="text-[10px] sm:text-[11px] font-medium tracking-wide uppercase text-emerald-400">
+              SEBI Sandbox & DLT
+            </span>
+
             <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
           </div>
+
           <div class="mt-2 flex items-baseline gap-2">
-            <span id="stat-sebi" class="text-3xl font-bold font-mono text-white">0</span>
-            <span class="text-xs text-emerald-400/70 font-mono">DEMAT 2.0 / BONDS</span>
+            <span id="stat-sebi" class="text-2xl sm:text-3xl font-bold font-mono text-white">0</span>
+            <span class="text-[9px] sm:text-xs text-emerald-400/70 font-mono">TRACKED</span>
           </div>
-        </div>
-        <div class="bg-brand-900/60 border border-brand-800/70 p-4 rounded-xl">
+        </button>
+
+
+        <button
+          type="button"
+          onclick="setFilter('IFSCA')"
+          class="focus-ring text-left bg-brand-900/65 hover:bg-brand-850/70 border border-brand-800/70 hover:border-purple-700/70 p-4 rounded-xl transition-all"
+        >
           <div class="flex justify-between items-center">
-            <span class="text-[11px] font-medium tracking-wide uppercase text-purple-400">IFSCA (GIFT City)</span>
+            <span class="text-[10px] sm:text-[11px] font-medium tracking-wide uppercase text-purple-400">
+              IFSCA · GIFT City
+            </span>
+
             <span class="h-1.5 w-1.5 rounded-full bg-purple-400"></span>
           </div>
+
           <div class="mt-2 flex items-baseline gap-2">
-            <span id="stat-ifsca" class="text-3xl font-bold font-mono text-white">0</span>
-            <span class="text-xs text-purple-400/70 font-mono">GLOBAL RWA / BDR</span>
+            <span id="stat-ifsca" class="text-2xl sm:text-3xl font-bold font-mono text-white">0</span>
+            <span class="text-[9px] sm:text-xs text-purple-400/70 font-mono">TRACKED</span>
           </div>
-        </div>
+        </button>
+
       </div>
     </div>
   </header>
 
-  <!-- Main Content Area -->
-  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-8 py-6">
 
-    <!-- Search & Filter Controls -->
-    <div class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 mb-6">
-      <div class="relative flex-1 max-w-md">
-        <svg class="absolute left-3.5 top-3 h-4 w-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-        <input
-          type="text"
-          id="search-input"
-          placeholder="Filter by asset type, pilot name, or issuer..."
-          class="w-full bg-brand-900/90 border border-brand-800/80 rounded-lg pl-10 pr-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500/70 focus:ring-1 focus:ring-cyan-500/50 font-mono"
-        />
+  <!-- =========================================================
+       MAIN
+  ========================================================== -->
+  <main class="flex-1 w-full max-w-[1600px] mx-auto px-4 sm:px-8 py-6">
+
+    <!-- Filter bar -->
+    <section aria-label="Ledger filters">
+
+      <div class="flex flex-col xl:flex-row items-stretch xl:items-center justify-between gap-3 mb-4">
+
+        <!-- Search -->
+        <div class="relative flex-1 xl:max-w-xl">
+
+          <label for="search-input" class="sr-only">
+            Search institutional ledger
+          </label>
+
+          <svg
+            class="absolute left-3.5 top-3.5 h-4 w-4 text-slate-500 pointer-events-none"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
+
+          <input
+            type="search"
+            id="search-input"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="Search project, issuer, taxonomy, summary, or ID..."
+            class="focus-ring w-full bg-brand-900/90 border border-brand-800/80 rounded-lg pl-10 pr-10 py-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500/70 focus:ring-1 focus:ring-cyan-500/30 font-mono"
+          />
+
+          <button
+            type="button"
+            id="clear-search-btn"
+            onclick="clearSearch()"
+            class="hidden absolute right-3 top-2.5 w-6 h-6 rounded-md text-slate-500 hover:text-white hover:bg-brand-800 text-xs transition-all focus-ring"
+            aria-label="Clear search"
+          >
+            ✕
+          </button>
+
+        </div>
+
+
+        <!-- Controls -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+
+          <label for="asset-type-select" class="sr-only">
+            Filter by asset taxonomy
+          </label>
+
+          <select
+            id="asset-type-select"
+            onchange="setAssetTypeFilter(this.value)"
+            class="focus-ring bg-brand-900/90 border border-brand-800/80 rounded-lg px-3 py-3 text-xs text-slate-300 focus:outline-none focus:border-cyan-500/70 font-mono"
+          >
+            <option value="ALL">All Asset Taxonomies</option>
+            <option value="Sovereign Debt">Sovereign Debt</option>
+            <option value="Corporate Debt">Corporate Debt</option>
+            <option value="Money Market">Money Market</option>
+            <option value="Digital Currency / CBDC">Digital Currency / CBDC</option>
+            <option value="Commercial Real Estate">Commercial Real Estate</option>
+            <option value="Trade Finance">Trade Finance</option>
+            <option value="Bullion">Bullion</option>
+            <option value="Financial Infrastructure">Financial Infrastructure</option>
+          </select>
+
+
+          <div
+            class="inline-flex p-1 bg-brand-900/90 border border-brand-800/80 rounded-lg text-xs font-medium"
+            id="filter-tabs"
+            role="tablist"
+            aria-label="Filter by regulator"
+          >
+
+            <button
+              type="button"
+              onclick="setFilter('ALL')"
+              id="tab-ALL"
+              role="tab"
+              aria-selected="true"
+              class="filter-tab focus-ring px-3.5 py-2 rounded-md text-white bg-brand-800 border border-brand-700/60 font-mono transition-all"
+            >
+              All
+            </button>
+
+            <button
+              type="button"
+              onclick="setFilter('RBI')"
+              id="tab-RBI"
+              role="tab"
+              aria-selected="false"
+              class="filter-tab focus-ring px-3.5 py-2 rounded-md text-slate-400 hover:text-white font-mono transition-all"
+            >
+              RBI
+            </button>
+
+            <button
+              type="button"
+              onclick="setFilter('SEBI')"
+              id="tab-SEBI"
+              role="tab"
+              aria-selected="false"
+              class="filter-tab focus-ring px-3.5 py-2 rounded-md text-slate-400 hover:text-white font-mono transition-all"
+            >
+              SEBI
+            </button>
+
+            <button
+              type="button"
+              onclick="setFilter('IFSCA')"
+              id="tab-IFSCA"
+              role="tab"
+              aria-selected="false"
+              class="filter-tab focus-ring px-3.5 py-2 rounded-md text-slate-400 hover:text-white font-mono transition-all"
+            >
+              IFSCA
+            </button>
+
+          </div>
+
+        </div>
       </div>
 
-      <!-- Segment Filter Pills -->
-      <div class="inline-flex p-1 bg-brand-900/90 border border-brand-800/80 rounded-lg text-xs font-medium" id="filter-tabs">
-        <button onclick="setFilter('ALL')" class="filter-tab px-3.5 py-1.5 rounded-md text-white bg-brand-800 border border-brand-700/60 font-mono transition-all">All</button>
-        <button onclick="setFilter('RBI')" class="filter-tab px-3.5 py-1.5 rounded-md text-slate-400 hover:text-white font-mono transition-all">RBI</button>
-        <button onclick="setFilter('SEBI')" class="filter-tab px-3.5 py-1.5 rounded-md text-slate-400 hover:text-white font-mono transition-all">SEBI</button>
-        <button onclick="setFilter('IFSCA')" class="filter-tab px-3.5 py-1.5 rounded-md text-slate-400 hover:text-white font-mono transition-all">IFSCA</button>
+
+      <!-- Active status -->
+      <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 mb-3 text-xs font-mono">
+
+        <div class="text-slate-400">
+          Displaying
+          <span id="displayed-count" class="text-white font-semibold">0</span>
+          <span>of</span>
+          <span id="total-count-inline" class="text-slate-300">0</span>
+          verified institutional entries
+        </div>
+
+        <div class="flex items-center gap-2 text-[10px] text-slate-500">
+          <span class="inline-block w-2 h-2 rounded-full bg-emerald-500"></span>
+          Primary-source / issuer-linked records
+        </div>
+
       </div>
-    </div>
 
-    <!-- Active Filter Counter -->
-    <div class="flex justify-between items-center mb-3 text-xs text-slate-400 font-mono">
-      <div>Showing <span id="displayed-count" class="text-white font-semibold">0</span> verified regulatory entries</div>
-      <div class="text-[11px] text-slate-400">Directly linked to official gazettes</div>
-    </div>
+    </section>
 
-    <!-- Mobile Stack Cards -->
-    <div class="block md:hidden space-y-3" id="mobile-cards-container"></div>
 
-    <!-- Desktop Institutional Table -->
-    <div class="hidden md:block overflow-hidden rounded-xl border border-brand-800/70 bg-brand-900/40 shadow-xl backdrop-blur-sm">
-      <table class="w-full text-left text-xs border-collapse">
-        <thead class="bg-brand-900/90 border-b border-brand-800/80 font-mono uppercase tracking-wider text-[11px] text-slate-400">
+    <!-- =====================================================
+         MOBILE CARDS
+    ====================================================== -->
+    <div
+      class="block md:hidden space-y-3"
+      id="mobile-cards-container"
+      aria-live="polite"
+    ></div>
+
+
+    <!-- =====================================================
+         DESKTOP TABLE
+    ====================================================== -->
+    <div class="hidden md:block overflow-x-auto rounded-xl border border-brand-800/70 bg-brand-900/40 shadow-2xl backdrop-blur-sm">
+
+      <table class="w-full min-w-[1100px] text-left text-xs border-collapse">
+
+        <caption class="sr-only">
+          India Tokenization and DLT institutional regulatory ledger
+        </caption>
+
+        <thead class="bg-brand-900/95 border-b border-brand-800/80 font-mono uppercase tracking-wider text-[10px] text-slate-400">
+
           <tr>
-            <th class="px-4 py-3.5">Identifier & Project</th>
-            <th class="px-4 py-3.5">Issuer / Sponsor</th>
-            <th class="px-4 py-3.5">Regulator</th>
-            <th class="px-4 py-3.5">Underlying Asset</th>
-            <th class="px-4 py-3.5">Regulatory Status</th>
-            <th class="px-4 py-3.5 text-right">Verification</th>
+
+            <th scope="col" class="px-4 py-3.5 w-[31%]">
+              Identifier & Project
+            </th>
+
+            <th scope="col" class="px-4 py-3.5 w-[20%]">
+              Issuer / Sponsor
+            </th>
+
+            <th scope="col" class="px-4 py-3.5 w-[9%]">
+              Regulator
+            </th>
+
+            <th scope="col" class="px-4 py-3.5 w-[13%]">
+              Asset Taxonomy
+            </th>
+
+            <th scope="col" class="px-4 py-3.5 w-[12%]">
+              Status
+            </th>
+
+            <th scope="col" class="px-4 py-3.5 w-[15%] text-right">
+              Verification
+            </th>
+
           </tr>
+
         </thead>
-        <tbody id="desktop-table-body" class="divide-y divide-brand-800/50 font-sans"></tbody>
+
+        <tbody
+          id="desktop-table-body"
+          class="divide-y divide-brand-800/50 font-sans"
+        ></tbody>
+
       </table>
+
     </div>
+
   </main>
 
-  <!-- Footer -->
-  <footer class="border-t border-brand-800/60 bg-brand-950 py-8 px-4 sm:px-8 text-xs text-slate-500 mt-12">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
-      <p>© 2026 India Tokenization & Regulatory Sandbox Radar. Public market intelligence utility.</p>
-      <div class="flex items-center gap-6 font-mono text-[11px]">
-        <span>Verified against RBI, SEBI & IFSCA registries.</span>
+
+  <!-- =========================================================
+       TOAST
+  ========================================================== -->
+  <div
+    id="toast"
+    role="status"
+    aria-live="polite"
+    class="fixed bottom-5 right-4 sm:right-5 z-50 max-w-[calc(100vw-2rem)] transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300 bg-brand-850 border border-cyan-500/50 text-white px-4 py-3 rounded-lg shadow-2xl text-xs font-mono flex items-center gap-2"
+  >
+    <span class="h-2 w-2 rounded-full bg-cyan-400 shrink-0"></span>
+    <span id="toast-message">Notification</span>
+  </div>
+
+
+  <!-- =========================================================
+       FOOTER
+  ========================================================== -->
+  <footer class="border-t border-brand-800/60 bg-brand-950 py-10 px-4 sm:px-8 text-xs text-slate-500 mt-12">
+
+    <div class="w-full max-w-[1600px] mx-auto space-y-6">
+
+      <div class="flex flex-col lg:flex-row justify-between items-center lg:items-start gap-5">
+
+        <div class="space-y-1.5 text-center lg:text-left">
+          <p class="font-medium text-slate-400 font-mono tracking-wide">
+            INDIA TOKENIZATION & DLT RADAR
+          </p>
+
+          <p class="text-[11px] text-slate-500 max-w-2xl leading-relaxed">
+            Open-access market intelligence directory tracking selected regulatory sandbox cohorts,
+            DLT initiatives, tokenization activity, and digital financial-market infrastructure.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-5 font-mono text-[10px] shrink-0">
+
+          <span class="text-slate-400 flex items-center gap-1.5">
+            <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+            PRIMARY-SOURCE INDEX
+          </span>
+
+          <span class="hidden sm:inline text-brand-700">|</span>
+
+          <button
+            type="button"
+            onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+            class="focus-ring text-cyan-400 hover:text-cyan-300 transition-colors"
+          >
+            Back to Top ↑
+          </button>
+
+        </div>
+
       </div>
+
+
+      <div class="border-t border-brand-800/40"></div>
+
+
+      <div class="text-[10px] leading-relaxed text-slate-500 space-y-3">
+
+        <p>
+          <strong class="text-slate-400 font-mono uppercase tracking-wider">
+            Statutory & Regulatory Disclaimer:
+          </strong>
+
+          This terminal is an independent research and market intelligence directory published
+          strictly for informational, educational, and academic purposes. It does not constitute
+          legal, regulatory, financial, tax, or investment advice. Inclusion of any project,
+          corporate issuer, financial instrument, or regulatory sandbox activity does not constitute
+          endorsement, authorization, solicitation, or a recommendation to invest.
+        </p>
+
+        <p>
+          This platform is not maintained by, affiliated with, or an official medium of the
+          Reserve Bank of India (RBI), the Securities and Exchange Board of India (SEBI),
+          the International Financial Services Centres Authority (IFSCA), or the Ministry of Finance.
+          Information is compiled from publicly accessible regulatory publications, statutory
+          documents, issuer disclosures, and other cited sources. Users should independently
+          verify primary documents and obtain appropriate professional advice before making
+          operational, legal, or investment decisions.
+        </p>
+
+        <p class="text-slate-600">
+          Data classification: Public-source research • Last interface refresh:
+          <span id="footer-date">—</span>
+        </p>
+
+      </div>
+
     </div>
   </footer>
 
+
   <script>
+    /* =========================================================
+       MASTER LEDGER
+       ========================================================= */
+
     const data = [
       {
-        "id": "IN-01",
-        "projectName": "e₹-W Wholesale CBDC Pilot — Secondary Market G-Sec Settlement",
-        "issuer": "Reserve Bank of India and participating banks",
-        "regulator": "RBI",
-        "assetType": "Sovereign Debt",
-        "status": "Pilot Launched",
-        "summary": "Wholesale digital rupee pilot settling secondary-market government securities in central-bank money, reducing settlement risk and collateral needs.",
-        "sourceUrl": "https://www.rbi.org.in/SCRIPTs/BS_PressReleaseDisplay.aspx?prid=54616"
+        id: "IN-01",
+        projectName: "e₹-W Wholesale CBDC Pilot — Secondary Market G-Sec Settlement",
+        issuer: "Reserve Bank of India & Participating Primary Banks",
+        regulator: "RBI",
+        assetType: "Sovereign Debt",
+        status: "Pilot Launched",
+        summary: "Inaugural wholesale digital rupee pilot settling secondary sovereign debt transactions in central bank money with atomic Delivery-versus-Payment (DvP).",
+        sourceType: "RBI Press Release",
+        sourceUrl: "https://www.rbi.org.in/SCRIPTs/BS_PressReleaseDisplay.aspx?prid=54616"
       },
       {
-        "id": "IN-02",
-        "projectName": "e₹-W Wholesale CBDC Pilot — Interbank Lending and Borrowing",
-        "issuer": "Reserve Bank of India and participating banks/primary dealers",
-        "regulator": "RBI",
-        "assetType": "Money Market / Interbank Lending",
-        "status": "Trials Tested",
-        "summary": "Expansion of wholesale CBDC pilot to interbank call-money market lending and borrowing to reduce reconciliation friction.",
-        "sourceUrl": "https://www.rbi.org.in/scripts/AnnualReportPublications.aspx?Id=1406"
+        id: "IN-02",
+        projectName: "e₹-W Wholesale CBDC Pilot — Interbank Call Money Trials",
+        issuer: "Reserve Bank of India & Primary Dealers",
+        regulator: "RBI",
+        assetType: "Money Market",
+        status: "Trials Tested",
+        summary: "Expansion of the wholesale digital rupee architecture to interbank lending and borrowing in the call-money market to minimize reconciliation cycles.",
+        sourceType: "RBI Statutory Report",
+        sourceUrl: "https://www.rbi.org.in/scripts/AnnualReportPublications.aspx?Id=1406"
       },
       {
-        "id": "IN-03",
-        "projectName": "e₹-R Retail CBDC Pilot — P2P and P2M Payments",
-        "issuer": "Reserve Bank of India with participating banks and wallet providers",
-        "regulator": "RBI",
-        "assetType": "Digital Currency / Retail Payments",
-        "status": "Pilot Launched",
-        "summary": "Retail digital rupee pilot in closed user groups for P2P and P2M payments distributed through commercial bank digital wallets.",
-        "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=54717"
+        id: "IN-03",
+        projectName: "e₹-R Retail CBDC Pilot — P2P and P2M Distribution",
+        issuer: "Reserve Bank of India & Commercial Banks",
+        regulator: "RBI",
+        assetType: "Digital Currency / CBDC",
+        status: "Pilot Launched",
+        summary: "Sovereign retail digital rupee trial testing person-to-person and person-to-merchant token transfer in closed user groups across two-tier wallet architectures.",
+        sourceType: "RBI Press Release",
+        sourceUrl: "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=54717"
       },
       {
-        "id": "IN-04",
-        "projectName": "e₹-R Programmable CBDC — Farmer Carbon-Credit Payments",
-        "issuer": "Reserve Bank of India with participating banks",
-        "regulator": "RBI",
-        "assetType": "Programmable Digital Currency / Carbon Credits",
-        "status": "Pilot Launched",
-        "summary": "Programmable retail CBDC tested for direct benefit transfers to farmers against carbon credits with smart policy purpose constraints.",
-        "sourceUrl": "https://www.rbi.org.in/scripts/AnnualReportPublications.aspx?Id=1436"
+        id: "IN-04",
+        projectName: "e₹-R Programmable CBDC — Agricultural Carbon Credits",
+        issuer: "Reserve Bank of India & Commercial Partner Banks",
+        regulator: "RBI",
+        assetType: "Digital Currency / CBDC",
+        status: "Pilot Launched",
+        summary: "Smart-programmable retail CBDC trials issuing direct benefit payments to agricultural producers contingent on audited carbon credit generation.",
+        sourceType: "RBI Statutory Report",
+        sourceUrl: "https://www.rbi.org.in/scripts/AnnualReportPublications.aspx?Id=1436"
       },
       {
-        "id": "IN-05",
-        "projectName": "e₹-R Programmable CBDC — Kisan Credit Card Tenant-Farmer Loans",
-        "issuer": "Reserve Bank of India with participating banks",
-        "regulator": "RBI",
-        "assetType": "Agricultural Credit / Programmable Currency",
-        "status": "Pilot Launched",
-        "summary": "Programmable e₹ for tenant farmer loans under Kisan Credit Card architecture to enforce end-use conditions in central bank money.",
-        "sourceUrl": "https://www.rbi.org.in/scripts/AnnualReportPublications.aspx?Id=1436"
+        id: "IN-05",
+        projectName: "e₹-R Programmable CBDC — Tenant Farmer Input Financing",
+        issuer: "Reserve Bank of India & Scheduled Banks",
+        regulator: "RBI",
+        assetType: "Digital Currency / CBDC",
+        status: "Pilot Launched",
+        summary: "Programmable retail digital rupee distributed under the Kisan Credit Card framework to ensure credit is restricted to agricultural input suppliers.",
+        sourceType: "RBI Statutory Report",
+        sourceUrl: "https://www.rbi.org.in/scripts/AnnualReportPublications.aspx?Id=1436"
       },
       {
-        "id": "IN-06",
-        "projectName": "e₹-R Programmable CBDC — Employee Fuel and Meal Allowances",
-        "issuer": "Reserve Bank of India with commercial banks and employers",
-        "regulator": "RBI",
-        "assetType": "Programmable Digital Currency / Benefits",
-        "status": "Pilot Launched",
-        "summary": "Corporate allowance use cases embedding smart purpose rules directly into retail CBDC workflows for fuel and meal allowances.",
-        "sourceUrl": "https://www.rbi.org.in/scripts/AnnualReportPublications.aspx?Id=1436"
+        id: "IN-06",
+        projectName: "e₹-R Programmable CBDC — Purpose-Bound Corporate Benefits",
+        issuer: "Reserve Bank of India & Enterprise Partners",
+        regulator: "RBI",
+        assetType: "Digital Currency / CBDC",
+        status: "Pilot Launched",
+        summary: "Enterprise allowance framework embedding smart validity parameters into retail CBDC workflows for fuel, sustenance, and travel allocations.",
+        sourceType: "RBI Statutory Report",
+        sourceUrl: "https://www.rbi.org.in/scripts/AnnualReportPublications.aspx?Id=1436"
       },
       {
-        "id": "IN-07",
-        "projectName": "Unified Markets Interface — Tokenised CD Pilot",
-        "issuer": "Reserve Bank of India with participating financial institutions",
-        "regulator": "RBI",
-        "assetType": "Certificate of Deposit",
-        "status": "Pilot Launched",
-        "summary": "Next-generation market infrastructure testing issuance, transfer, and settlement of tokenised Certificates of Deposit via wholesale CBDC.",
-        "sourceUrl": "https://www.rbi.org.in/scripts/AnnualReportPublications.aspx?Id=1436"
+        id: "IN-07",
+        projectName: "Unified Markets Interface (UMI) — Tokenised CD Pilot",
+        issuer: "Reserve Bank of India & Core Clearing Banks",
+        regulator: "RBI",
+        assetType: "Money Market",
+        status: "Pilot Launched",
+        summary: "Core DLT financial market infrastructure testing tokenized Certificates of Deposit with instant atomic settlement via wholesale CBDC.",
+        sourceType: "RBI Statutory Report",
+        sourceUrl: "https://www.rbi.org.in/scripts/AnnualReportPublications.aspx?Id=1436"
       },
       {
-        "id": "IN-08",
-        "projectName": "Unified Markets Interface — Tokenised Commercial Paper Trials",
-        "issuer": "Reserve Bank of India with participating money-market institutions",
-        "regulator": "RBI",
-        "assetType": "Commercial Paper",
-        "status": "Trials Tested",
-        "summary": "Representation and settlement of tokenised commercial paper on UMI using wholesale CBDC instead of legacy settlement clearing rails.",
-        "sourceUrl": "https://economictimes.indiatimes.com/news/economy/finance/rbi-explores-tokenising-gold-amid-push-to-expand-unified-markets-interface/articleshow/133967357.cms"
+        id: "IN-08",
+        projectName: "Unified Markets Interface (UMI) — Tokenised Commercial Paper Trials",
+        issuer: "Reserve Bank of India & Money Market Dealers",
+        regulator: "RBI",
+        assetType: "Money Market",
+        status: "Trials Tested",
+        summary: "Secondary market settlement of tokenized commercial paper on unified digital ledger infrastructure bypassing legacy batch-clearing systems.",
+        sourceType: "National Financial Gazette Report",
+        sourceUrl: "https://economictimes.indiatimes.com/news/economy/finance/rbi-explores-tokenising-gold-amid-push-to-expand-unified-markets-interface/articleshow/133967357.cms"
       },
       {
-        "id": "IN-09",
-        "projectName": "eRupaya Offline Retail Payments Pilot",
-        "issuer": "Natural Support Consultancy Services Pvt. Ltd.",
-        "regulator": "RBI",
-        "assetType": "Offline Digital Payments",
-        "status": "Trials Tested",
-        "summary": "NFC prepaid cards and point-of-sale devices tested under RBI first Regulatory Sandbox cohort for connectivity-constrained regions.",
-        "sourceUrl": "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=50665"
+        id: "IN-09",
+        projectName: "eRupaya Offline Retail Payments Trial",
+        issuer: "Natural Support Consultancy Services Pvt. Ltd.",
+        regulator: "RBI",
+        assetType: "Digital Currency / CBDC",
+        status: "Trials Tested",
+        summary: "Regulatory sandbox testing of hardware-based NFC prepaid devices executing offline retail payments in low-connectivity rural environments.",
+        sourceType: "RBI Sandbox Cohort Statement",
+        sourceUrl: "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=50665"
       },
       {
-        "id": "IN-10",
-        "projectName": "PaySe Offline Digital Cash and Rural Payments Pilot",
-        "issuer": "Nucleus Software Exports Ltd.",
-        "regulator": "RBI",
-        "assetType": "Offline Digital Cash / Rural Payments",
-        "status": "Trials Tested",
-        "summary": "Offline digital-cash solution tested for rural payments and self-help groups under RBI Retail Payments Sandbox cohort.",
-        "sourceUrl": "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=50665"
+        id: "IN-10",
+        projectName: "PaySe Offline Digital Currency Pilot",
+        issuer: "Nucleus Software Exports Ltd.",
+        regulator: "RBI",
+        assetType: "Digital Currency / CBDC",
+        status: "Trials Tested",
+        summary: "Offline ledger solution tested under RBI Cohort 1 to deliver zero-connectivity electronic cash infrastructure for Self-Help Groups (SHGs).",
+        sourceType: "RBI Sandbox Cohort Statement",
+        sourceUrl: "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=50665"
       },
       {
-        "id": "IN-11",
-        "projectName": "Cashfree Cross-Border Investment Payments Pilot",
-        "issuer": "Cashfree Payments India Private Limited",
-        "regulator": "RBI",
-        "assetType": "Cross-Border Payments / Foreign Securities",
-        "status": "Trials Tested",
-        "summary": "Compliant outward remittance rails testing local payment methods for Indian retail investors purchasing foreign equities and ETFs.",
-        "sourceUrl": "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=54057"
+        id: "IN-11",
+        projectName: "Cashfree Regulated Cross-Border Securities Rail",
+        issuer: "Cashfree Payments India Private Limited",
+        regulator: "RBI",
+        assetType: "Financial Infrastructure",
+        status: "Trials Tested",
+        summary: "Compliant outward cross-border remittance gateway enabling domestic Indian retail investors to purchase global equities and ETFs directly.",
+        sourceType: "RBI Sandbox Cohort Exit",
+        sourceUrl: "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=54057"
       },
       {
-        "id": "IN-12",
-        "projectName": "Open Financial Blockchain Cross-Border Payments Pilot",
-        "issuer": "Open Financial Technologies Private Limited",
-        "regulator": "RBI",
-        "assetType": "Cross-Border Payments / Blockchain Settlement",
-        "status": "Trials Tested",
-        "summary": "Distributed ledger cross-border payment system tested in RBI Cohort 2 for tamper-resistant transaction settlement and monitoring.",
-        "sourceUrl": "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=54057"
+        id: "IN-12",
+        projectName: "Open Financial DLT Cross-Border Remittance Rail",
+        issuer: "Open Financial Technologies Private Limited",
+        regulator: "RBI",
+        assetType: "Financial Infrastructure",
+        status: "Trials Tested",
+        summary: "Distributed ledger framework tested under RBI Cohort 2 providing an immutable audit and clearing layer for cross-border merchant trade flows.",
+        sourceType: "RBI Sandbox Cohort Exit",
+        sourceUrl: "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=54057"
       },
       {
-        "id": "IN-13",
-        "projectName": "Finagg Blockchain Deep-Tier Vendor Financing Pilot",
-        "issuer": "Finagg Technologies Private Limited",
-        "regulator": "RBI",
-        "assetType": "Trade Receivables / MSME Credit",
-        "status": "Trials Tested",
-        "summary": "Deep-tier supply chain financing converting anchor receivables into digital tokens funded by commercial banks and NBFCs.",
-        "sourceUrl": "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=58377"
+        id: "IN-13",
+        projectName: "Finagg Deep-Tier Tokenised Vendor Financing Pilot",
+        issuer: "Finagg Technologies Private Limited",
+        regulator: "RBI",
+        assetType: "Trade Finance",
+        status: "Trials Tested",
+        summary: "Converting corporate buyer receivables into fractional, transferable cryptographic tokens financed by banks for Tier-2 and Tier-3 MSME suppliers.",
+        sourceType: "RBI Sandbox Viability Release",
+        sourceUrl: "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=58377"
       },
       {
-        "id": "IN-14",
-        "projectName": "IBDIC Blockchain Tokenised Invoice Financing Pilot",
-        "issuer": "Indian Banks' Digital Infrastructure Company (IBDIC)",
-        "regulator": "RBI",
-        "assetType": "Trade Receivables / Tokenised Invoices",
-        "status": "Trials Tested",
-        "summary": "Smart-contract platform by major domestic banks tokenising accepted enterprise trade invoices to disburse instant MSME supplier credit.",
-        "sourceUrl": "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=58377"
+        id: "IN-14",
+        projectName: "IBDIC Tokenised Trade Invoice Clearing Platform",
+        issuer: "Indian Banks' Digital Infrastructure Company (IBDIC)",
+        regulator: "RBI",
+        assetType: "Trade Finance",
+        status: "Trials Tested",
+        summary: "Bank consortium DLT network tokenizing verified trade invoices across supply chains to eliminate invoice-duplication fraud and unlock lending.",
+        sourceType: "RBI Sandbox Viability Release",
+        sourceUrl: "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=58377"
       },
       {
-        "id": "IN-15",
-        "projectName": "Bahwan Cybertek Real-Time Financial Fraud Monitoring Pilot",
-        "issuer": "Bahwan Cybertek",
-        "regulator": "RBI",
-        "assetType": "Fraud Prevention / Transaction Monitoring",
-        "status": "Trials Tested",
-        "summary": "Real-time algorithmic fraud mitigation product tested and approved for commercial adoption under RBI's 4th Sandbox cohort.",
-        "sourceUrl": "https://rbi.org.in/Scripts/PublicationsView.aspx?id=22453"
+        id: "IN-15",
+        projectName: "Bahwan Cybertek Real-Time Fraud Mitigation Layer",
+        issuer: "Bahwan Cybertek",
+        regulator: "RBI",
+        assetType: "Financial Infrastructure",
+        status: "Trials Tested",
+        summary: "Algorithmic behavioral scoring and anomaly detection infrastructure evaluated and deemed viable for commercial adoption by regulated banks.",
+        sourceType: "RBI Cohort 4 Assessment",
+        sourceUrl: "https://rbi.org.in/Scripts/PublicationsView.aspx?id=22453"
       },
       {
-        "id": "IN-16",
-        "projectName": "Cybersec napID Fraud Filter Layer Pilot",
-        "issuer": "Cybersec",
-        "regulator": "RBI",
-        "assetType": "Fraud Prevention / Identity Security",
-        "status": "Trials Tested",
-        "summary": "Form-level security filtering layer securing checkout and login payment channels, exiting cohort 4 as commercially viable.",
-        "sourceUrl": "https://rbi.org.in/Scripts/PublicationsView.aspx?id=22453"
+        id: "IN-16",
+        projectName: "napID Transaction Channel Protection Layer",
+        issuer: "Cybersec napID",
+        regulator: "RBI",
+        assetType: "Financial Infrastructure",
+        status: "Trials Tested",
+        summary: "Form-level tokenized security layer preventing identity injection and credential fraud during payment checkout, completing Cohort 4.",
+        sourceType: "RBI Cohort 4 Assessment",
+        sourceUrl: "https://rbi.org.in/Scripts/PublicationsView.aspx?id=22453"
       },
       {
-        "id": "IN-17",
-        "projectName": "Trusting Social Credit Insight Fraud-Risk Ranking Pilot",
-        "issuer": "Trusting Social",
-        "regulator": "RBI",
-        "assetType": "Credit Risk / Fraud Analytics",
-        "status": "Trials Tested",
-        "summary": "Alternative data credit evaluation and risk-scoring tool verified for exit from RBI financial-fraud sandbox testing.",
-        "sourceUrl": "https://rbi.org.in/Scripts/PublicationsView.aspx?id=22453"
+        id: "IN-17",
+        projectName: "Trusting Social Credit Insight Scoring Platform",
+        issuer: "Trusting Social",
+        regulator: "RBI",
+        assetType: "Financial Infrastructure",
+        status: "Trials Tested",
+        summary: "Alternative data risk-ranking and fraud engine evaluated for underbanked borrower scoring, approved as viable under RBI Sandbox Cohort 4.",
+        sourceType: "RBI Cohort 4 Assessment",
+        sourceUrl: "https://rbi.org.in/Scripts/PublicationsView.aspx?id=22453"
       },
       {
-        "id": "IN-18",
-        "projectName": "Unified Lending Interface Public Tech Platform Pilot",
-        "issuer": "RBI / Reserve Bank Innovation Hub (RBIH)",
-        "regulator": "RBI",
-        "assetType": "Digital Lending Infrastructure",
-        "status": "Pilot Launched",
-        "summary": "Open digital infrastructure connecting lenders to friction-free verified data feeds for KCC agricultural and MSME loans.",
-        "sourceUrl": "https://www.rbi.org.in/scripts/AnnualReportPublications.aspx?Id=1406"
+        id: "IN-18",
+        projectName: "Unified Lending Interface (ULI) Public Technology Platform",
+        issuer: "Reserve Bank of India & Reserve Bank Innovation Hub",
+        regulator: "RBI",
+        assetType: "Financial Infrastructure",
+        status: "Pilot Launched",
+        summary: "National open API digital lending architecture bridging land registries, satellite data, and banks for automated friction-free credit evaluation.",
+        sourceType: "RBI Statutory Annual Report",
+        sourceUrl: "https://www.rbi.org.in/scripts/AnnualReportPublications.aspx?Id=1406"
       },
       {
-        "id": "IN-19",
-        "projectName": "REC Limited Tokenised Corporate Bond Pilot",
-        "issuer": "REC Limited (Power Ministry CPSE)",
-        "regulator": "SEBI",
-        "assetType": "Corporate Bond",
-        "status": "Successfully Issued",
-        "summary": "Historic ₹500 Cr bond issue under SEBI Regulatory Sandbox using Demat 2.0 distributed ledger settlement via NSE EBP.",
-        "sourceUrl": "https://recindia.nic.in/rec-limited-successfully-issued-indias-first-pilot-issue-on-tokenized-corporate-bonds-under-sebi-regulatory-sandbox-framework"
+        id: "IN-19",
+        projectName: "REC Limited Demat 2.0 Tokenised Corporate Bond",
+        issuer: "REC Limited (Power Ministry CPSE)",
+        regulator: "SEBI",
+        assetType: "Corporate Debt",
+        status: "Pilot Launched",
+        summary: "Historic ₹500 Cr bond issuance executed under SEBI's Regulatory Sandbox via NSE EBP, testing DLT-based atomic Delivery-versus-Payment.",
+        sourceType: "Issuing CPSE Regulatory Release",
+        sourceUrl: "https://recindia.nic.in/rec-limited-successfully-issued-indias-first-pilot-issue-on-tokenized-corporate-bonds-under-sebi-regulatory-sandbox-framework"
       },
       {
-        "id": "IN-20",
-        "projectName": "SEBI Security & Covenant Monitoring System Using DLT",
-        "issuer": "NSDL, CDSL & Market Infrastructure Intermediaries",
-        "regulator": "SEBI",
-        "assetType": "Debt Securities / Covenants",
-        "status": "Operational",
-        "summary": "Mandated depository-hosted DLT registry creating immutable audit trails of asset cover and debt covenant compliance.",
-        "sourceUrl": "https://www.sebi.gov.in/legal/circulars/aug-2021/-security-and-covenant-monitoring-using-distributed-ledger-technology_51855.html"
+        id: "IN-20",
+        projectName: "SEBI DLT Security & Covenant Monitoring System",
+        issuer: "NSDL, CDSL & Market Infrastructure Intermediaries",
+        regulator: "SEBI",
+        assetType: "Financial Infrastructure",
+        status: "Operational",
+        summary: "Mandatory depository-hosted distributed ledger recording charge creation, asset coverage, and covenant compliance for corporate debt issues.",
+        sourceType: "SEBI Statutory Circular",
+        sourceUrl: "https://www.sebi.gov.in/legal/circulars/aug-2021/-security-and-covenant-monitoring-using-distributed-ledger-technology_51855.html"
       },
       {
-        "id": "IN-21",
-        "projectName": "Evernest Fractional Commercial Real Estate Sandbox",
-        "issuer": "Evernest Investment Advisers Pvt. Ltd.",
-        "regulator": "SEBI",
-        "assetType": "Commercial Real Estate",
-        "status": "Application Withdrawn",
-        "summary": "Experimental framework proposing fractional investment units in income-yielding commercial real estate in India.",
-        "sourceUrl": "https://www.sebi.gov.in/sebiweb/other/RegulatorySandbox.jsp"
+        id: "IN-21",
+        projectName: "Evernest Fractional Commercial Real Estate Framework",
+        issuer: "Evernest Investment Advisers Pvt. Ltd.",
+        regulator: "SEBI",
+        assetType: "Commercial Real Estate",
+        status: "Application Withdrawn",
+        summary: "Experimental framework proposing fractional ownership of income-yielding commercial realty; formal application withdrawn per SEBI sandbox logs.",
+        sourceType: "SEBI Sandbox Status Registry",
+        sourceUrl: "https://www.sebi.gov.in/sebiweb/other/RegulatorySandbox.jsp"
       },
       {
-        "id": "IN-22",
-        "projectName": "Terazo Regulated Commercial Real Estate Tokenisation Offering",
-        "issuer": "Terazo Fintech LLP / Collated Ventures with Savvy Group",
-        "regulator": "IFSCA",
-        "assetType": "Commercial Real Estate",
-        "status": "Live Sandbox Offering",
-        "summary": "Category III Alternative Investment Fund (AIF) tokenising economic rights to the Oryx commercial project via Polygon.",
-        "sourceUrl": "https://www.terazo.network/"
+        id: "IN-22",
+        projectName: "Terazo Oryx Commercial Real Estate Tokenisation",
+        issuer: "Terazo Fintech LLP & Savvy Group",
+        regulator: "IFSCA",
+        assetType: "Commercial Real Estate",
+        status: "Operational",
+        summary: "Category III Alternative Investment Fund (AIF) structure tokenizing fractional economic rights to commercial projects in GIFT City on Polygon.",
+        sourceType: "Direct Issuer Filing Portal",
+        sourceUrl: "https://www.terazo.network/"
       },
       {
-        "id": "IN-23",
-        "projectName": "Pinvest Exchange Real Estate & Infrastructure Tokenisation",
-        "issuer": "Realdom India Pvt. Ltd.",
-        "regulator": "IFSCA",
-        "assetType": "Real Estate and Infrastructure",
-        "status": "Live Sandbox Offering",
-        "summary": "Limited Use Authorization from IFSCA testing secondary trading and fractional tokenisation of infrastructure for global investors.",
-        "sourceUrl": "https://pinvest.exchange/"
+        id: "IN-23",
+        projectName: "Pinvest Exchange Fractional Real Estate Sandbox",
+        issuer: "Realdom India Pvt. Ltd.",
+        regulator: "IFSCA",
+        assetType: "Commercial Real Estate",
+        status: "Operational",
+        summary: "Authorized under IFSCA FinTech Regulatory Sandbox with Limited Use Authorization to facilitate fractional cross-border infrastructure investment.",
+        sourceType: "Direct Issuer Platform",
+        sourceUrl: "https://pinvest.exchange/"
       },
       {
-        "id": "IN-24",
-        "projectName": "IIBX Electronic Bullion Depository Receipt System",
-        "issuer": "India International Bullion Exchange (IIBX)",
-        "regulator": "IFSCA",
-        "assetType": "Gold and Silver Bullion",
-        "status": "Operational",
-        "summary": "Electronic depository receipts representing physically vaulted, audit-verified bullion traded at GIFT City depository.",
-        "sourceUrl": "https://ifsca.gov.in/web/viewer.html?file=%2FDocument%2FLegal%2Fcircular-on-consolidated-operating-guidelines-exchange-cc-depositories-and-vm_approved26082021021026.pdf"
+        id: "IN-24",
+        projectName: "India International Bullion Exchange (IIBX) Depository Receipts",
+        issuer: "India International Bullion Exchange (IIBX)",
+        regulator: "IFSCA",
+        assetType: "Bullion",
+        status: "Operational",
+        summary: "Electronic Bullion Depository Receipts (BDRs) representing vault-audited physical bullion traded and settled at GIFT City IFSC.",
+        sourceType: "IFSCA Regulatory Operating Guidelines",
+        sourceUrl: "https://ifsca.gov.in/web/viewer.html?file=%2FDocument%2FLegal%2Fcircular-on-consolidated-operating-guidelines-exchange-cc-depositories-and-vm_approved26082021021026.pdf"
       }
     ];
 
-    let activeFilter = 'ALL';
-    let searchQuery = '';
+
+    /* =========================================================
+       STATE
+    ========================================================= */
+
+    let activeFilter = "ALL";
+    let activeAssetType = "ALL";
+    let searchQuery = "";
+    let toastTimer = null;
+
+
+    /* =========================================================
+       UTILITIES
+    ========================================================= */
+
+    function escapeHTML(value) {
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+
+    function highlightText(text, query) {
+      const safeText = escapeHTML(text);
+
+      if (!query) {
+        return safeText;
+      }
+
+      const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+      return safeText.replace(
+        new RegExp(`(${escapedQuery})`, "gi"),
+        '<mark class="mark-highlight">$1</mark>'
+      );
+    }
+
+
+    function isSafeUrl(url) {
+      try {
+        const parsed = new URL(url);
+
+        return (
+          parsed.protocol === "https:" ||
+          parsed.protocol === "http:"
+        );
+      } catch {
+        return false;
+      }
+    }
+
+
+    function formatNumber(number) {
+      return new Intl.NumberFormat("en-IN").format(number);
+    }
+
+
+    /* =========================================================
+       CLOCK
+    ========================================================= */
+
+    function updateTerminalClock() {
+      const now = new Date();
+
+      const timeStr = now.toLocaleTimeString("en-IN", {
+        hour12: false,
+        timeZone: "Asia/Kolkata"
+      });
+
+      document.getElementById("terminal-clock").textContent =
+        `${timeStr} IST`;
+    }
+
+    updateTerminalClock();
+    setInterval(updateTerminalClock, 1000);
+
+
+    /* =========================================================
+       TOAST
+    ========================================================= */
+
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      const toastMessage = document.getElementById("toast-message");
+
+      toastMessage.textContent = message;
+
+      toast.classList.remove(
+        "translate-y-20",
+        "opacity-0",
+        "pointer-events-none"
+      );
+
+      clearTimeout(toastTimer);
+
+      toastTimer = setTimeout(() => {
+        toast.classList.add(
+          "translate-y-20",
+          "opacity-0",
+          "pointer-events-none"
+        );
+      }, 3000);
+    }
+
+
+    /* =========================================================
+       BADGES
+    ========================================================= */
 
     function getRegulatorBadge(regulator) {
-      if (regulator.includes('RBI')) {
-        return '<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-blue-950 text-blue-300 border border-blue-800/60">RBI</span>';
-      }
-      if (regulator.includes('SEBI')) {
-        return '<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-emerald-950 text-emerald-300 border border-emerald-800/60">SEBI</span>';
-      }
-      return '<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-purple-950 text-purple-300 border border-purple-800/60">IFSCA</span>';
+      const config = {
+        RBI: {
+          classes: "bg-blue-950 text-blue-300 border-blue-800/60"
+        },
+        SEBI: {
+          classes: "bg-emerald-950 text-emerald-300 border-emerald-800/60"
+        },
+        IFSCA: {
+          classes: "bg-purple-950 text-purple-300 border-purple-800/60"
+        }
+      };
+
+      const item = config[regulator] || config.IFSCA;
+
+      return `
+        <span class="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-mono font-medium ${item.classes} border">
+          ${escapeHTML(regulator)}
+        </span>
+      `;
     }
+
 
     function getStatusBadge(status) {
-      if (status.includes('Successfully') || status.includes('Operational')) {
-        return '<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-emerald-950/60 text-emerald-300 border border-emerald-800/50"><span class="h-1 w-1 rounded-full bg-emerald-400"></span>' + status + '</span>';
-      }
-      if (status.includes('Live') || status.includes('Pilot Launched')) {
-        return '<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-cyan-950/60 text-cyan-300 border border-cyan-800/50"><span class="h-1 w-1 rounded-full bg-cyan-400"></span>' + status + '</span>';
-      }
-      if (status.includes('Withdrawn')) {
-        return '<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-rose-950/60 text-rose-300 border border-rose-800/50"><span class="h-1 w-1 rounded-full bg-rose-400"></span>' + status + '</span>';
-      }
-      return '<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-amber-950/60 text-amber-300 border border-amber-800/50"><span class="h-1 w-1 rounded-full bg-amber-400"></span>' + status + '</span>';
+      const config = {
+        "Operational": {
+          classes: "bg-emerald-950/60 text-emerald-300 border-emerald-800/50",
+          dot: "bg-emerald-400"
+        },
+
+        "Pilot Launched": {
+          classes: "bg-cyan-950/60 text-cyan-300 border-cyan-800/50",
+          dot: "bg-cyan-400"
+        },
+
+        "Trials Tested": {
+          classes: "bg-amber-950/60 text-amber-300 border-amber-800/50",
+          dot: "bg-amber-400"
+        },
+
+        "Application Withdrawn": {
+          classes: "bg-rose-950/60 text-rose-300 border-rose-800/50",
+          dot: "bg-rose-400"
+        }
+      };
+
+      const item = config[status] || {
+        classes: "bg-slate-900 text-slate-300 border-slate-700",
+        dot: "bg-slate-400"
+      };
+
+      return `
+        <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md text-[10px] sm:text-[11px] font-mono font-medium ${item.classes} border whitespace-nowrap">
+          <span class="h-1 w-1 rounded-full ${item.dot}"></span>
+          ${escapeHTML(status)}
+        </span>
+      `;
     }
 
-    function renderStats() {
-      document.getElementById('stat-total').innerText = data.length;
-      document.getElementById('stat-rbi').innerText = data.filter(d => d.regulator.includes('RBI')).length;
-      document.getElementById('stat-sebi').innerText = data.filter(d => d.regulator.includes('SEBI')).length;
-      document.getElementById('stat-ifsca').innerText = data.filter(d => d.regulator.includes('IFSCA')).length;
-    }
+
+    /* =========================================================
+       FILTERING
+    ========================================================= */
 
     function filterData() {
+      const term = searchQuery.toLowerCase();
+
       return data.filter(item => {
-        const matchesRegulator = activeFilter === 'ALL' || item.regulator.includes(activeFilter);
-        const term = searchQuery.toLowerCase();
-        const matchesSearch = item.projectName.toLowerCase().includes(term) ||
-                              item.issuer.toLowerCase().includes(term) ||
-                              item.assetType.toLowerCase().includes(term) ||
-                              item.summary.toLowerCase().includes(term);
-        return matchesRegulator && matchesSearch;
+
+        const matchesRegulator =
+          activeFilter === "ALL" ||
+          item.regulator === activeFilter;
+
+        const matchesAssetType =
+          activeAssetType === "ALL" ||
+          item.assetType === activeAssetType;
+
+        const searchableText = [
+          item.id,
+          item.projectName,
+          item.issuer,
+          item.regulator,
+          item.assetType,
+          item.status,
+          item.summary,
+          item.sourceType
+        ]
+          .join(" ")
+          .toLowerCase();
+
+        const matchesSearch =
+          !term ||
+          searchableText.includes(term);
+
+        return (
+          matchesRegulator &&
+          matchesAssetType &&
+          matchesSearch
+        );
       });
     }
 
+
+    /* =========================================================
+       STATS
+    ========================================================= */
+
+    function renderStats() {
+      const total = data.length;
+      const rbi = data.filter(d => d.regulator === "RBI").length;
+      const sebi = data.filter(d => d.regulator === "SEBI").length;
+      const ifsca = data.filter(d => d.regulator === "IFSCA").length;
+
+      document.getElementById("stat-total").textContent = formatNumber(total);
+      document.getElementById("stat-rbi").textContent = formatNumber(rbi);
+      document.getElementById("stat-sebi").textContent = formatNumber(sebi);
+      document.getElementById("stat-ifsca").textContent = formatNumber(ifsca);
+      document.getElementById("total-count-inline").textContent = formatNumber(total);
+    }
+
+
+    /* =========================================================
+       SHAREABLE DEEP LINKS
+    ========================================================= */
+
+    async function shareDirectLink(id) {
+      const item = data.find(entry => entry.id === id);
+
+      if (!item) {
+        showToast("Initiative not found.");
+        return;
+      }
+
+      const url = new URL(window.location.href);
+
+      url.search = "";
+      url.searchParams.set("pilot", id);
+
+      try {
+        if (navigator.share) {
+          await navigator.share({
+            title: `${item.id} — ${item.projectName}`,
+            text: `India Tokenization & DLT Radar — ${item.projectName}`,
+            url: url.toString()
+          });
+
+          showToast(`Shared ${id}`);
+          return;
+        }
+
+        if (navigator.clipboard) {
+          await navigator.clipboard.writeText(url.toString());
+          showToast(`Copied verified link for ${id}`);
+          return;
+        }
+
+        window.prompt("Copy this verified link:", url.toString());
+
+      } catch (error) {
+        if (error?.name !== "AbortError") {
+          showToast("Unable to share link.");
+        }
+      }
+    }
+
+
+    /* =========================================================
+       RENDER
+    ========================================================= */
+
     function renderViews() {
       const filtered = filterData();
-      document.getElementById('displayed-count').innerText = filtered.length;
 
-      const desktopTbody = document.getElementById('desktop-table-body');
-      desktopTbody.innerHTML = '';
+      document.getElementById("displayed-count").textContent =
+        formatNumber(filtered.length);
 
-      const mobileContainer = document.getElementById('mobile-cards-container');
-      mobileContainer.innerHTML = '';
+      renderDesktopTable(filtered);
+      renderMobileCards(filtered);
+    }
 
-      if (filtered.length === 0) {
-        desktopTbody.innerHTML = `<tr><td colspan="6" class="px-6 py-12 text-center text-slate-500 font-mono">No regulatory pilots match the selected parameters.</td></tr>`;
-        mobileContainer.innerHTML = `<div class="p-8 text-center text-slate-500 font-mono text-xs border border-brand-800/60 rounded-xl bg-brand-900/30">No regulatory pilots match the selected parameters.</div>`;
+
+    function renderEmptyState() {
+      return `
+        <div class="p-8 text-center text-slate-500 font-mono text-xs">
+          <div class="text-slate-400 mb-1">
+            No regulatory initiatives match the active parameters.
+          </div>
+
+          <button
+            type="button"
+            onclick="resetAllFilters()"
+            class="focus-ring text-cyan-400 hover:text-cyan-300 underline underline-offset-2 mt-2"
+          >
+            Reset filters
+          </button>
+        </div>
+      `;
+    }
+
+
+    function renderDesktopTable(filtered) {
+      const tbody = document.getElementById("desktop-table-body");
+
+      tbody.innerHTML = "";
+
+      if (!filtered.length) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6">
+              ${renderEmptyState()}
+            </td>
+          </tr>
+        `;
         return;
       }
 
       filtered.forEach(item => {
-        // Desktop Row
-        const row = document.createElement('tr');
-        row.className = 'hover:bg-brand-850/50 transition-colors group';
-        row.innerHTML = `
-          <td class="px-4 py-3.5">
-            <div class="flex items-center gap-2">
-              <span class="font-mono text-[10px] text-slate-500">${item.id}</span>
-              <span class="font-semibold text-white group-hover:text-cyan-300 transition-colors">${item.projectName}</span>
-            </div>
-            <div class="text-[11px] text-slate-400 mt-1 max-w-md leading-relaxed">${item.summary}</div>
-          </td>
-          <td class="px-4 py-3.5 text-slate-300 font-medium">${item.issuer}</td>
-          <td class="px-4 py-3.5">${getRegulatorBadge(item.regulator)}</td>
-          <td class="px-4 py-3.5 font-mono text-slate-300 text-[11px]">${item.assetType}</td>
-          <td class="px-4 py-3.5">${getStatusBadge(item.status)}</td>
-          <td class="px-4 py-3.5 text-right">
-            <a href="${item.sourceUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-[11px] font-mono text-cyan-400 hover:text-cyan-300 bg-brand-800/80 hover:bg-brand-700 px-2.5 py-1 rounded border border-brand-700/60 transition-all">
-              Filing ↗
-            </a>
-          </td>
-        `;
-        desktopTbody.appendChild(row);
 
-        // Mobile Card
-        const card = document.createElement('div');
-        card.className = 'p-4 rounded-xl border border-brand-800/70 bg-brand-900/50 space-y-3';
-        card.innerHTML = `
-          <div class="flex items-start justify-between gap-2">
-            <div>
-              <div class="flex items-center gap-2 mb-1">
-                <span class="font-mono text-[10px] text-slate-500">${item.id}</span>
-                ${getRegulatorBadge(item.regulator)}
-              </div>
-              <h3 class="font-semibold text-sm text-white">${item.projectName}</h3>
-            </div>
-          </div>
-          <p class="text-xs text-slate-400 leading-relaxed">${item.summary}</p>
-          <div class="grid grid-cols-2 gap-2 text-xs pt-2 border-t border-brand-800/60">
-            <div>
-              <span class="text-[10px] text-slate-500 uppercase block font-mono">Issuer</span>
-              <span class="text-slate-300 font-medium">${item.issuer}</span>
-            </div>
-            <div>
-              <span class="text-[10px] text-slate-500 uppercase block font-mono">Asset Type</span>
-              <span class="text-slate-300 font-mono text-[11px]">${item.assetType}</span>
-            </div>
-          </div>
-          <div class="flex items-center justify-between pt-2">
-            ${getStatusBadge(item.status)}
-            <a href="${item.sourceUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs font-mono text-cyan-400 hover:text-cyan-300 bg-brand-800/90 px-3 py-1.5 rounded-lg border border-brand-700/80">
-              Verify Filing ↗
+        const row = document.createElement("tr");
+
+        row.id = `row-${item.id}`;
+
+        row.className =
+          "hover:bg-brand-850/50 transition-colors group";
+
+        const sourceLink = isSafeUrl(item.sourceUrl)
+          ? `
+            <a
+              href="${escapeHTML(item.sourceUrl)}"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="focus-ring inline-flex items-center gap-1 text-[10px] sm:text-[11px] font-mono text-cyan-400 hover:text-cyan-300 bg-brand-800/80 hover:bg-brand-700 px-2.5 py-1.5 rounded-md border border-brand-700/60 transition-all whitespace-nowrap"
+            >
+              Citation ↗
             </a>
-          </div>
+          `
+          : `
+            <span class="text-[10px] text-slate-600 font-mono">
+              Source unavailable
+            </span>
+          `;
+
+        row.innerHTML = `
+          <td class="px-4 py-4 align-top">
+
+            <div class="flex items-start gap-2">
+
+              <button
+                type="button"
+                onclick="shareDirectLink('${escapeHTML(item.id)}')"
+                title="Copy or share ${escapeHTML(item.id)}"
+                class="focus-ring shrink-0 font-mono text-[10px] text-slate-500 hover:text-cyan-300 transition-colors pt-0.5"
+              >
+                ${highlightText(item.id, searchQuery)}
+              </button>
+
+              <div class="min-w-0">
+
+                <div class="font-semibold text-white group-hover:text-cyan-300 transition-colors leading-snug">
+                  ${highlightText(item.projectName, searchQuery)}
+                </div>
+
+                <div class="text-[11px] text-slate-400 mt-1.5 max-w-2xl leading-relaxed">
+                  ${highlightText(item.summary, searchQuery)}
+                </div>
+
+              </div>
+
+            </div>
+
+          </td>
+
+
+          <td class="px-4 py-4 align-top">
+            <div class="text-slate-300 font-medium leading-relaxed">
+              ${highlightText(item.issuer, searchQuery)}
+            </div>
+          </td>
+
+
+          <td class="px-4 py-4 align-top">
+            ${getRegulatorBadge(item.regulator)}
+          </td>
+
+
+          <td class="px-4 py-4 align-top">
+            <span class="font-mono text-[11px] text-slate-300 leading-relaxed">
+              ${highlightText(item.assetType, searchQuery)}
+            </span>
+          </td>
+
+
+          <td class="px-4 py-4 align-top">
+            ${getStatusBadge(item.status)}
+          </td>
+
+
+          <td class="px-4 py-4 align-top text-right">
+
+            <div class="flex flex-col items-end gap-2">
+
+              <span class="text-[9px] font-mono text-slate-600 uppercase tracking-wide">
+                ${escapeHTML(item.sourceType)}
+              </span>
+
+              <div class="flex items-center gap-2">
+
+                <button
+                  type="button"
+                  onclick="shareDirectLink('${escapeHTML(item.id)}')"
+                  title="Share initiative"
+                  class="focus-ring text-slate-500 hover:text-slate-200 p-1.5 rounded-md bg-brand-800/40 hover:bg-brand-800 transition-all"
+                >
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"
+                    />
+                  </svg>
+                </button>
+
+                ${sourceLink}
+
+              </div>
+
+            </div>
+
+          </td>
         `;
-        mobileContainer.appendChild(card);
+
+        tbody.appendChild(row);
       });
     }
+
+
+    function renderMobileCards(filtered) {
+      const container =
+        document.getElementById("mobile-cards-container");
+
+      container.innerHTML = "";
+
+      if (!filtered.length) {
+        container.innerHTML = `
+          <div class="rounded-xl border border-brand-800/60 bg-brand-900/30">
+            ${renderEmptyState()}
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(item => {
+
+        const card = document.createElement("article");
+
+        card.id = `card-${item.id}`;
+
+        card.className =
+          "p-4 rounded-xl border border-brand-800/70 bg-brand-900/55 hover:bg-brand-850/50 transition-all space-y-3";
+
+
+        const sourceLink = isSafeUrl(item.sourceUrl)
+          ? `
+            <a
+              href="${escapeHTML(item.sourceUrl)}"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="focus-ring inline-flex items-center gap-1 text-[10px] font-mono text-cyan-400 hover:text-cyan-300 bg-brand-800/90 px-3 py-1.5 rounded-lg border border-brand-700/80"
+            >
+              Source ↗
+            </a>
+          `
+          : "";
+
+
+        card.innerHTML = `
+
+          <div class="flex items-start justify-between gap-3">
+
+            <div class="min-w-0">
+
+              <div class="flex items-center gap-2 mb-1.5 flex-wrap">
+
+                <button
+                  type="button"
+                  onclick="shareDirectLink('${escapeHTML(item.id)}')"
+                  class="focus-ring font-mono text-[10px] text-slate-500 hover:text-cyan-300"
+                >
+                  ${highlightText(item.id, searchQuery)}
+                </button>
+
+                ${getRegulatorBadge(item.regulator)}
+
+              </div>
+
+              <h2 class="font-semibold text-sm text-white leading-snug">
+                ${highlightText(item.projectName, searchQuery)}
+              </h2>
+
+            </div>
+
+          </div>
+
+
+          <p class="text-xs text-slate-400 leading-relaxed">
+            ${highlightText(item.summary, searchQuery)}
+          </p>
+
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-3 border-t border-brand-800/60">
+
+            <div class="min-w-0">
+
+              <span class="text-[9px] text-slate-500 uppercase block font-mono mb-1">
+                Issuer / Sponsor
+              </span>
+
+              <span class="text-xs text-slate-300 font-medium leading-relaxed">
+                ${highlightText(item.issuer, searchQuery)}
+              </span>
+
+            </div>
+
+
+            <div class="min-w-0">
+
+              <span class="text-[9px] text-slate-500 uppercase block font-mono mb-1">
+                Taxonomy
+              </span>
+
+              <span class="text-[11px] text-slate-300 font-mono leading-relaxed">
+                ${highlightText(item.assetType, searchQuery)}
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="flex flex-wrap items-center justify-between gap-2 pt-1">
+
+            ${getStatusBadge(item.status)}
+
+            <div class="flex items-center gap-2">
+
+              <button
+                type="button"
+                onclick="shareDirectLink('${escapeHTML(item.id)}')"
+                class="focus-ring text-[10px] text-slate-400 hover:text-white font-mono bg-brand-800/60 hover:bg-brand-700 px-2.5 py-1.5 rounded-lg transition-all"
+              >
+                Share
+              </button>
+
+              ${sourceLink}
+
+            </div>
+
+          </div>
+
+
+          <div class="text-[9px] text-slate-600 font-mono pt-1">
+            ${escapeHTML(item.sourceType)}
+          </div>
+
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+
+    /* =========================================================
+       FILTER CONTROLS
+    ========================================================= */
 
     function setFilter(regulator) {
       activeFilter = regulator;
-      document.querySelectorAll('.filter-tab').forEach(btn => {
-        btn.className = 'filter-tab px-3.5 py-1.5 rounded-md text-slate-400 hover:text-white font-mono transition-all';
+
+      document.querySelectorAll(".filter-tab").forEach(btn => {
+        btn.className =
+          "filter-tab focus-ring px-3.5 py-2 rounded-md text-slate-400 hover:text-white font-mono transition-all";
+
+        btn.setAttribute("aria-selected", "false");
       });
-      event.target.className = 'filter-tab px-3.5 py-1.5 rounded-md text-white bg-brand-800 border border-brand-700/60 font-mono transition-all';
-      renderViews();
-    }
 
-    document.getElementById('search-input').addEventListener('input', (e) => {
-      searchQuery = e.target.value;
-      renderViews();
-    });
+      const activeBtn =
+        document.getElementById(`tab-${regulator}`);
 
-    function copyOrDownload() {
-      const btnText = document.getElementById('export-text');
-      
-      const headers = "ID\tProject Name\tIssuer / Sponsor\tRegulator\tAsset Type\tStatus\tSummary\tSource Filing\n";
-      const rows = data.map(d => 
-        `${d.id}\t${d.projectName}\t${d.issuer}\t${d.regulator}\t${d.assetType}\t${d.status}\t${d.summary}\t${d.sourceUrl}`
-      ).join('\n');
-      
-      const fullText = headers + rows;
+      if (activeBtn) {
+        activeBtn.className =
+          "filter-tab focus-ring px-3.5 py-2 rounded-md text-white bg-brand-800 border border-brand-700/60 font-mono transition-all";
 
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText(fullText).then(() => {
-          btnText.innerText = "Copied to Clipboard! ✓";
-          setTimeout(() => { btnText.innerText = "Export / Copy Data"; }, 2500);
-        }).catch(() => {});
+        activeBtn.setAttribute("aria-selected", "true");
       }
 
-      const csvContent = "\uFEFF" + ["ID,Project Name,Issuer,Regulator,Asset Type,Status,Summary,Source URL"].concat(
-        data.map(d => `"${d.id}","${d.projectName.replace(/"/g, '""')}","${d.issuer.replace(/"/g, '""')}","${d.regulator}","${d.assetType.replace(/"/g, '""')}","${d.status}","${d.summary.replace(/"/g, '""')}","${d.sourceUrl}"`)
-      ).join("\n");
-
-      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.setAttribute('href', url);
-      a.setAttribute('download', 'india-tokenization-regulatory-ledger.csv');
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
+      renderViews();
     }
+
+
+    function setAssetTypeFilter(value) {
+      activeAssetType = value;
+      renderViews();
+    }
+
+
+    function resetAllFilters() {
+      activeFilter = "ALL";
+      activeAssetType = "ALL";
+      searchQuery = "";
+
+      document.getElementById("search-input").value = "";
+      document.getElementById("asset-type-select").value = "ALL";
+      document.getElementById("clear-search-btn").classList.add("hidden");
+
+      setFilter("ALL");
+    }
+
+
+    function clearSearch() {
+      searchQuery = "";
+
+      document.getElementById("search-input").value = "";
+      document.getElementById("clear-search-btn").classList.add("hidden");
+
+      renderViews();
+
+      document.getElementById("search-input").focus();
+    }
+
+
+    /* =========================================================
+       SEARCH
+    ========================================================= */
+
+    document
+      .getElementById("search-input")
+      .addEventListener("input", event => {
+
+        searchQuery = event.target.value.trim();
+
+        const clearButton =
+          document.getElementById("clear-search-btn");
+
+        if (searchQuery) {
+          clearButton.classList.remove("hidden");
+        } else {
+          clearButton.classList.add("hidden");
+        }
+
+        renderViews();
+      });
+
+
+    /* =========================================================
+       KEYBOARD SHORTCUTS
+    ========================================================= */
+
+    document.addEventListener("keydown", event => {
+
+      if (
+        event.key === "/" &&
+        document.activeElement.tagName !== "INPUT" &&
+        document.activeElement.tagName !== "SELECT" &&
+        document.activeElement.tagName !== "TEXTAREA"
+      ) {
+        event.preventDefault();
+        document.getElementById("search-input").focus();
+      }
+
+      if (
+        event.key === "Escape" &&
+        document.activeElement === document.getElementById("search-input")
+      ) {
+        clearSearch();
+      }
+    });
+
+
+    /* =========================================================
+       CSV EXPORT
+    ========================================================= */
+
+    function csvEscape(value) {
+      const stringValue = String(value ?? "");
+
+      return `"${stringValue.replace(/"/g, '""')}"`;
+    }
+
+
+    function buildCSV() {
+
+      const headers = [
+        "ID",
+        "Project Name",
+        "Issuer / Sponsor",
+        "Regulator",
+        "Asset Taxonomy",
+        "Status",
+        "Summary",
+        "Source Type",
+        "Source URL"
+      ];
+
+      const rows = data.map(item => [
+        item.id,
+        item.projectName,
+        item.issuer,
+        item.regulator,
+        item.assetType,
+        item.status,
+        item.summary,
+        item.sourceType,
+        item.sourceUrl
+      ]);
+
+      return "\uFEFF" +
+        [
+          headers.map(csvEscape).join(","),
+          ...rows.map(row => row.map(csvEscape).join(","))
+        ].join("\r\n");
+    }
+
+
+    function exportLedger() {
+
+      const button = document.getElementById("export-btn");
+      const buttonText = document.getElementById("export-text");
+
+      try {
+
+        const csv = buildCSV();
+
+        const blob = new Blob(
+          [csv],
+          { type: "text/csv;charset=utf-8;" }
+        );
+
+        const url = URL.createObjectURL(blob);
+
+        const anchor = document.createElement("a");
+
+        anchor.href = url;
+        anchor.download =
+          "india-tokenization-regulatory-ledger.csv";
+
+        document.body.appendChild(anchor);
+        anchor.click();
+        anchor.remove();
+
+        setTimeout(() => {
+          URL.revokeObjectURL(url);
+        }, 1000);
+
+        button.disabled = true;
+        button.classList.add("opacity-70", "cursor-wait");
+
+        buttonText.textContent = "Ledger Exported ✓";
+
+        showToast(
+          `${data.length} institutional records exported as CSV.`
+        );
+
+        setTimeout(() => {
+          button.disabled = false;
+          button.classList.remove("opacity-70", "cursor-wait");
+          buttonText.textContent = "Export Ledger";
+        }, 2200);
+
+      } catch (error) {
+        console.error(error);
+        showToast("Export failed. Please try again.");
+      }
+    }
+
+
+    /* =========================================================
+       DEEP LINK
+    ========================================================= */
+
+    function handleDeepLink() {
+
+      const params =
+        new URLSearchParams(window.location.search);
+
+      const pilotId =
+        params.get("pilot");
+
+      if (!pilotId) {
+        return;
+      }
+
+      const item =
+        data.find(entry => entry.id === pilotId);
+
+      if (!item) {
+        showToast(`No initiative found for ${pilotId}.`);
+        return;
+      }
+
+      searchQuery = pilotId;
+
+      const input =
+        document.getElementById("search-input");
+
+      input.value = pilotId;
+
+      document
+        .getElementById("clear-search-btn")
+        .classList.remove("hidden");
+
+      renderViews();
+
+      setTimeout(() => {
+
+        const target =
+          window.innerWidth >= 768
+            ? document.getElementById(`row-${pilotId}`)
+            : document.getElementById(`card-${pilotId}`);
+
+        if (target) {
+
+          target.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+          });
+
+          target.classList.add("table-row-highlight");
+
+          setTimeout(() => {
+            target.classList.remove("table-row-highlight");
+          }, 1600);
+        }
+
+      }, 100);
+
+      showToast(`Filtered directly to ${pilotId}`);
+    }
+
+
+    /* =========================================================
+       FOOTER DATE
+    ========================================================= */
+
+    function updateFooterDate() {
+
+      const date = new Date();
+
+      const formatted =
+        new Intl.DateTimeFormat("en-IN", {
+          dateStyle: "medium",
+          timeZone: "Asia/Kolkata"
+        }).format(date);
+
+      document.getElementById("footer-date").textContent =
+        formatted;
+    }
+
+
+    /* =========================================================
+       INITIALIZE
+    ========================================================= */
 
     renderStats();
     renderViews();
+    updateFooterDate();
+    handleDeepLink();
+
   </script>
+
 </body>
 </html>
