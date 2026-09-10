@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>India Tokenization & Regulatory Sandbox Radar | Institutional Intelligence</title>
+  <title>India Tokenization & Regulatory Sandbox Radar | Institutional Terminal</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,7 +41,7 @@
 </head>
 <body class="bg-brand-950 text-slate-200 font-sans antialiased min-h-screen flex flex-col selection:bg-cyan-500/20 selection:text-cyan-300">
 
-  <!-- Top Enterprise Status Strip -->
+  <!-- Top Institutional Bar -->
   <div class="border-b border-brand-800/80 bg-brand-900/60 px-4 py-2 text-xs text-slate-400">
     <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
       <div class="flex items-center gap-2">
@@ -108,7 +108,7 @@
           </div>
           <div class="mt-2 flex items-baseline gap-2">
             <span id="stat-rbi" class="text-3xl font-bold font-mono text-white">0</span>
-            <span class="text-xs text-blue-400/70 font-mono">UMI / CBDC</span>
+            <span class="text-xs text-blue-400/70 font-mono">UMI / CBDC / COHORTS</span>
           </div>
         </div>
         <div class="bg-brand-900/60 border border-brand-800/70 p-4 rounded-xl">
@@ -118,7 +118,7 @@
           </div>
           <div class="mt-2 flex items-baseline gap-2">
             <span id="stat-sebi" class="text-3xl font-bold font-mono text-white">0</span>
-            <span class="text-xs text-emerald-400/70 font-mono">DEMAT 2.0</span>
+            <span class="text-xs text-emerald-400/70 font-mono">DEMAT 2.0 / BONDS</span>
           </div>
         </div>
         <div class="bg-brand-900/60 border border-brand-800/70 p-4 rounded-xl">
@@ -128,7 +128,7 @@
           </div>
           <div class="mt-2 flex items-baseline gap-2">
             <span id="stat-ifsca" class="text-3xl font-bold font-mono text-white">0</span>
-            <span class="text-xs text-purple-400/70 font-mono">GLOBAL RWA</span>
+            <span class="text-xs text-purple-400/70 font-mono">GLOBAL RWA / BDR</span>
           </div>
         </div>
       </div>
@@ -150,7 +150,7 @@
         />
       </div>
 
-      <!-- Segment Filter Tabs -->
+      <!-- Segment Filter Pills -->
       <div class="inline-flex p-1 bg-brand-900/90 border border-brand-800/80 rounded-lg text-xs font-medium" id="filter-tabs">
         <button onclick="setFilter('ALL')" class="filter-tab px-3.5 py-1.5 rounded-md text-white bg-brand-800 border border-brand-700/60 font-mono transition-all">All</button>
         <button onclick="setFilter('RBI')" class="filter-tab px-3.5 py-1.5 rounded-md text-slate-400 hover:text-white font-mono transition-all">RBI</button>
@@ -200,83 +200,243 @@
     const data = [
       {
         "id": "IN-01",
-        "projectName": "Unified Markets Interface (UMI) — CD Pilot",
-        "issuer": "RBI & Primary Clearing Banks",
+        "projectName": "e₹-W Wholesale CBDC Pilot — Secondary Market G-Sec Settlement",
+        "issuer": "Reserve Bank of India and participating banks",
         "regulator": "RBI",
-        "assetType": "Certificate of Deposit",
+        "assetType": "Sovereign Debt",
         "status": "Pilot Launched",
-        "summary": "Testing tokenised Certificates of Deposit settled via wholesale CBDC on UMI infrastructure.",
-        "sourceUrl": "https://www.rbi.org.in"
+        "summary": "Wholesale digital rupee pilot settling secondary-market government securities in central-bank money, reducing settlement risk and collateral needs.",
+        "sourceUrl": "https://www.rbi.org.in/SCRIPTs/BS_PressReleaseDisplay.aspx?prid=54616"
       },
       {
         "id": "IN-02",
-        "projectName": "UMI — Commercial Paper DLT Trials",
-        "issuer": "RBI / Money Market Dealers",
+        "projectName": "e₹-W Wholesale CBDC Pilot — Interbank Lending and Borrowing",
+        "issuer": "Reserve Bank of India and participating banks/primary dealers",
         "regulator": "RBI",
-        "assetType": "Commercial Paper",
+        "assetType": "Money Market / Interbank Lending",
         "status": "Trials Tested",
-        "summary": "Extending UMI wholesale CBDC infrastructure to trial secondary market settlement of tokenised commercial paper.",
-        "sourceUrl": "https://www.rbi.org.in"
+        "summary": "Expansion of wholesale CBDC pilot to interbank call-money market lending and borrowing to reduce reconciliation friction.",
+        "sourceUrl": "https://www.rbi.org.in/scripts/AnnualReportPublications.aspx?Id=1406"
       },
       {
         "id": "IN-03",
-        "projectName": "e₹-W CBDC Secondary G-Sec Settlement",
-        "issuer": "SBI, HDFC, ICICI, Kotak, HSBC, BoB",
+        "projectName": "e₹-R Retail CBDC Pilot — P2P and P2M Payments",
+        "issuer": "Reserve Bank of India with participating banks and wallet providers",
         "regulator": "RBI",
-        "assetType": "Government Securities",
-        "status": "Operational",
-        "summary": "Wholesale CBDC pilot executing atomic Delivery-versus-Payment (DvP) in secondary sovereign debt markets.",
-        "sourceUrl": "https://rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=54616"
+        "assetType": "Digital Currency / Retail Payments",
+        "status": "Pilot Launched",
+        "summary": "Retail digital rupee pilot in closed user groups for P2P and P2M payments distributed through commercial bank digital wallets.",
+        "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=54717"
       },
       {
         "id": "IN-04",
-        "projectName": "REC Tokenised Corporate Bond Pilot",
+        "projectName": "e₹-R Programmable CBDC — Farmer Carbon-Credit Payments",
+        "issuer": "Reserve Bank of India with participating banks",
+        "regulator": "RBI",
+        "assetType": "Programmable Digital Currency / Carbon Credits",
+        "status": "Pilot Launched",
+        "summary": "Programmable retail CBDC tested for direct benefit transfers to farmers against carbon credits with smart policy purpose constraints.",
+        "sourceUrl": "https://www.rbi.org.in/scripts/AnnualReportPublications.aspx?Id=1436"
+      },
+      {
+        "id": "IN-05",
+        "projectName": "e₹-R Programmable CBDC — Kisan Credit Card Tenant-Farmer Loans",
+        "issuer": "Reserve Bank of India with participating banks",
+        "regulator": "RBI",
+        "assetType": "Agricultural Credit / Programmable Currency",
+        "status": "Pilot Launched",
+        "summary": "Programmable e₹ for tenant farmer loans under Kisan Credit Card architecture to enforce end-use conditions in central bank money.",
+        "sourceUrl": "https://www.rbi.org.in/scripts/AnnualReportPublications.aspx?Id=1436"
+      },
+      {
+        "id": "IN-06",
+        "projectName": "e₹-R Programmable CBDC — Employee Fuel and Meal Allowances",
+        "issuer": "Reserve Bank of India with commercial banks and employers",
+        "regulator": "RBI",
+        "assetType": "Programmable Digital Currency / Benefits",
+        "status": "Pilot Launched",
+        "summary": "Corporate allowance use cases embedding smart purpose rules directly into retail CBDC workflows for fuel and meal allowances.",
+        "sourceUrl": "https://www.rbi.org.in/scripts/AnnualReportPublications.aspx?Id=1436"
+      },
+      {
+        "id": "IN-07",
+        "projectName": "Unified Markets Interface — Tokenised CD Pilot",
+        "issuer": "Reserve Bank of India with participating financial institutions",
+        "regulator": "RBI",
+        "assetType": "Certificate of Deposit",
+        "status": "Pilot Launched",
+        "summary": "Next-generation market infrastructure testing issuance, transfer, and settlement of tokenised Certificates of Deposit via wholesale CBDC.",
+        "sourceUrl": "https://www.rbi.org.in/scripts/AnnualReportPublications.aspx?Id=1436"
+      },
+      {
+        "id": "IN-08",
+        "projectName": "Unified Markets Interface — Tokenised Commercial Paper Trials",
+        "issuer": "Reserve Bank of India with participating money-market institutions",
+        "regulator": "RBI",
+        "assetType": "Commercial Paper",
+        "status": "Trials Tested",
+        "summary": "Representation and settlement of tokenised commercial paper on UMI using wholesale CBDC instead of legacy settlement clearing rails.",
+        "sourceUrl": "https://economictimes.indiatimes.com/news/economy/finance/rbi-explores-tokenising-gold-amid-push-to-expand-unified-markets-interface/articleshow/133967357.cms"
+      },
+      {
+        "id": "IN-09",
+        "projectName": "eRupaya Offline Retail Payments Pilot",
+        "issuer": "Natural Support Consultancy Services Pvt. Ltd.",
+        "regulator": "RBI",
+        "assetType": "Offline Digital Payments",
+        "status": "Trials Tested",
+        "summary": "NFC prepaid cards and point-of-sale devices tested under RBI first Regulatory Sandbox cohort for connectivity-constrained regions.",
+        "sourceUrl": "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=50665"
+      },
+      {
+        "id": "IN-10",
+        "projectName": "PaySe Offline Digital Cash and Rural Payments Pilot",
+        "issuer": "Nucleus Software Exports Ltd.",
+        "regulator": "RBI",
+        "assetType": "Offline Digital Cash / Rural Payments",
+        "status": "Trials Tested",
+        "summary": "Offline digital-cash solution tested for rural payments and self-help groups under RBI Retail Payments Sandbox cohort.",
+        "sourceUrl": "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=50665"
+      },
+      {
+        "id": "IN-11",
+        "projectName": "Cashfree Cross-Border Investment Payments Pilot",
+        "issuer": "Cashfree Payments India Private Limited",
+        "regulator": "RBI",
+        "assetType": "Cross-Border Payments / Foreign Securities",
+        "status": "Trials Tested",
+        "summary": "Compliant outward remittance rails testing local payment methods for Indian retail investors purchasing foreign equities and ETFs.",
+        "sourceUrl": "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=54057"
+      },
+      {
+        "id": "IN-12",
+        "projectName": "Open Financial Blockchain Cross-Border Payments Pilot",
+        "issuer": "Open Financial Technologies Private Limited",
+        "regulator": "RBI",
+        "assetType": "Cross-Border Payments / Blockchain Settlement",
+        "status": "Trials Tested",
+        "summary": "Distributed ledger cross-border payment system tested in RBI Cohort 2 for tamper-resistant transaction settlement and monitoring.",
+        "sourceUrl": "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=54057"
+      },
+      {
+        "id": "IN-13",
+        "projectName": "Finagg Blockchain Deep-Tier Vendor Financing Pilot",
+        "issuer": "Finagg Technologies Private Limited",
+        "regulator": "RBI",
+        "assetType": "Trade Receivables / MSME Credit",
+        "status": "Trials Tested",
+        "summary": "Deep-tier supply chain financing converting anchor receivables into digital tokens funded by commercial banks and NBFCs.",
+        "sourceUrl": "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=58377"
+      },
+      {
+        "id": "IN-14",
+        "projectName": "IBDIC Blockchain Tokenised Invoice Financing Pilot",
+        "issuer": "Indian Banks' Digital Infrastructure Company (IBDIC)",
+        "regulator": "RBI",
+        "assetType": "Trade Receivables / Tokenised Invoices",
+        "status": "Trials Tested",
+        "summary": "Smart-contract platform by major domestic banks tokenising accepted enterprise trade invoices to disburse instant MSME supplier credit.",
+        "sourceUrl": "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=58377"
+      },
+      {
+        "id": "IN-15",
+        "projectName": "Bahwan Cybertek Real-Time Financial Fraud Monitoring Pilot",
+        "issuer": "Bahwan Cybertek",
+        "regulator": "RBI",
+        "assetType": "Fraud Prevention / Transaction Monitoring",
+        "status": "Trials Tested",
+        "summary": "Real-time algorithmic fraud mitigation product tested and approved for commercial adoption under RBI's 4th Sandbox cohort.",
+        "sourceUrl": "https://rbi.org.in/Scripts/PublicationsView.aspx?id=22453"
+      },
+      {
+        "id": "IN-16",
+        "projectName": "Cybersec napID Fraud Filter Layer Pilot",
+        "issuer": "Cybersec",
+        "regulator": "RBI",
+        "assetType": "Fraud Prevention / Identity Security",
+        "status": "Trials Tested",
+        "summary": "Form-level security filtering layer securing checkout and login payment channels, exiting cohort 4 as commercially viable.",
+        "sourceUrl": "https://rbi.org.in/Scripts/PublicationsView.aspx?id=22453"
+      },
+      {
+        "id": "IN-17",
+        "projectName": "Trusting Social Credit Insight Fraud-Risk Ranking Pilot",
+        "issuer": "Trusting Social",
+        "regulator": "RBI",
+        "assetType": "Credit Risk / Fraud Analytics",
+        "status": "Trials Tested",
+        "summary": "Alternative data credit evaluation and risk-scoring tool verified for exit from RBI financial-fraud sandbox testing.",
+        "sourceUrl": "https://rbi.org.in/Scripts/PublicationsView.aspx?id=22453"
+      },
+      {
+        "id": "IN-18",
+        "projectName": "Unified Lending Interface Public Tech Platform Pilot",
+        "issuer": "RBI / Reserve Bank Innovation Hub (RBIH)",
+        "regulator": "RBI",
+        "assetType": "Digital Lending Infrastructure",
+        "status": "Pilot Launched",
+        "summary": "Open digital infrastructure connecting lenders to friction-free verified data feeds for KCC agricultural and MSME loans.",
+        "sourceUrl": "https://www.rbi.org.in/scripts/AnnualReportPublications.aspx?Id=1406"
+      },
+      {
+        "id": "IN-19",
+        "projectName": "REC Limited Tokenised Corporate Bond Pilot",
         "issuer": "REC Limited (Power Ministry CPSE)",
         "regulator": "SEBI",
         "assetType": "Corporate Bond",
         "status": "Successfully Issued",
-        "summary": "₹500 Cr bond issue under SEBI Regulatory Sandbox using Demat 2.0 distributed ledger settlement via NSE EBP.",
+        "summary": "Historic ₹500 Cr bond issue under SEBI Regulatory Sandbox using Demat 2.0 distributed ledger settlement via NSE EBP.",
         "sourceUrl": "https://recindia.nic.in/rec-limited-successfully-issued-indias-first-pilot-issue-on-tokenized-corporate-bonds-under-sebi-regulatory-sandbox-framework"
       },
       {
-        "id": "IN-05",
-        "projectName": "Evernest Commercial Real Estate Sandbox",
+        "id": "IN-20",
+        "projectName": "SEBI Security & Covenant Monitoring System Using DLT",
+        "issuer": "NSDL, CDSL & Market Infrastructure Intermediaries",
+        "regulator": "SEBI",
+        "assetType": "Debt Securities / Covenants",
+        "status": "Operational",
+        "summary": "Mandated depository-hosted DLT registry creating immutable audit trails of asset cover and debt covenant compliance.",
+        "sourceUrl": "https://www.sebi.gov.in/legal/circulars/aug-2021/-security-and-covenant-monitoring-using-distributed-ledger-technology_51855.html"
+      },
+      {
+        "id": "IN-21",
+        "projectName": "Evernest Fractional Commercial Real Estate Sandbox",
         "issuer": "Evernest Investment Advisers Pvt. Ltd.",
         "regulator": "SEBI",
-        "assetType": "Real Estate",
+        "assetType": "Commercial Real Estate",
         "status": "Application Withdrawn",
-        "summary": "Experimental framework proposing fractional investment units in income-yielding commercial real estate.",
+        "summary": "Experimental framework proposing fractional investment units in income-yielding commercial real estate in India.",
         "sourceUrl": "https://www.sebi.gov.in/sebiweb/other/RegulatorySandbox.jsp"
       },
       {
-        "id": "IN-06",
-        "projectName": "Terazo / Oryx GIFT City Real Estate Tokenisation",
-        "issuer": "Terazo Fintech LLP / Savvy Group",
+        "id": "IN-22",
+        "projectName": "Terazo Regulated Commercial Real Estate Tokenisation Offering",
+        "issuer": "Terazo Fintech LLP / Collated Ventures with Savvy Group",
         "regulator": "IFSCA",
         "assetType": "Commercial Real Estate",
         "status": "Live Sandbox Offering",
         "summary": "Category III Alternative Investment Fund (AIF) tokenising economic rights to the Oryx commercial project via Polygon.",
-        "sourceUrl": "https://www.terazo.network/invest-in-oryx"
+        "sourceUrl": "https://www.terazo.network/"
       },
       {
-        "id": "IN-07",
-        "projectName": "Pinvest Exchange Asset Tokenisation Platform",
+        "id": "IN-23",
+        "projectName": "Pinvest Exchange Real Estate & Infrastructure Tokenisation",
         "issuer": "Realdom India Pvt. Ltd.",
         "regulator": "IFSCA",
-        "assetType": "Real Estate & Infra",
-        "status": "Limited Authorization",
-        "summary": "Regulated sandbox testing platform for global cross-border investors to participate in fractional Indian realty.",
-        "sourceUrl": "https://ifsca.gov.in"
+        "assetType": "Real Estate and Infrastructure",
+        "status": "Live Sandbox Offering",
+        "summary": "Limited Use Authorization from IFSCA testing secondary trading and fractional tokenisation of infrastructure for global investors.",
+        "sourceUrl": "https://pinvest.exchange/"
       },
       {
-        "id": "IN-08",
-        "projectName": "Bullion Depository Receipts (BDR Framework)",
+        "id": "IN-24",
+        "projectName": "IIBX Electronic Bullion Depository Receipt System",
         "issuer": "India International Bullion Exchange (IIBX)",
         "regulator": "IFSCA",
-        "assetType": "Physical Gold & Silver",
+        "assetType": "Gold and Silver Bullion",
         "status": "Operational",
-        "summary": "Electronic depository receipts representing physically vaulted, audit-verified bullion at GIFT City depository.",
-        "sourceUrl": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1746966&lang=2&reg=48"
+        "summary": "Electronic depository receipts representing physically vaulted, audit-verified bullion traded at GIFT City depository.",
+        "sourceUrl": "https://ifsca.gov.in/web/viewer.html?file=%2FDocument%2FLegal%2Fcircular-on-consolidated-operating-guidelines-exchange-cc-depositories-and-vm_approved26082021021026.pdf"
       }
     ];
 
@@ -414,7 +574,6 @@
       renderViews();
     });
 
-    // Universal Export: Copies table to clipboard and downloads standards-compliant CSV with UTF-8 BOM
     function copyOrDownload() {
       const btnText = document.getElementById('export-text');
       
@@ -425,7 +584,6 @@
       
       const fullText = headers + rows;
 
-      // Copy to clipboard for instant pasting on phone/desktop
       if (navigator.clipboard) {
         navigator.clipboard.writeText(fullText).then(() => {
           btnText.innerText = "Copied to Clipboard! ✓";
@@ -433,9 +591,8 @@
         }).catch(() => {});
       }
 
-      // Safe CSV download with UTF-8 Byte Order Mark (\uFEFF)
       const csvContent = "\uFEFF" + ["ID,Project Name,Issuer,Regulator,Asset Type,Status,Summary,Source URL"].concat(
-        data.map(d => `"${d.id}","${d.projectName}","${d.issuer}","${d.regulator}","${d.assetType}","${d.status}","${d.summary.replace(/"/g, '""')}","${d.sourceUrl}"`)
+        data.map(d => `"${d.id}","${d.projectName.replace(/"/g, '""')}","${d.issuer.replace(/"/g, '""')}","${d.regulator}","${d.assetType.replace(/"/g, '""')}","${d.status}","${d.summary.replace(/"/g, '""')}","${d.sourceUrl}"`)
       ).join("\n");
 
       const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
