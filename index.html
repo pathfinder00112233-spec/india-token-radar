@@ -80,9 +80,11 @@
 
         <!-- Terminal Quick Actions -->
         <div class="flex items-center gap-3">
-          <button onclick="downloadExcel()" class="px-3.5 py-2 rounded-lg bg-brand-850 hover:bg-brand-800 text-slate-200 border border-brand-700/60 text-xs font-medium font-mono flex items-center gap-2 transition-all shadow-sm">
-            <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-            Export to Excel (.XLS)
+          <button onclick="copyOrDownload()" id="export-btn" class="px-3.5 py-2 rounded-lg bg-brand-850 hover:bg-brand-800 text-slate-200 border border-brand-700/60 text-xs font-medium font-mono flex items-center gap-2 transition-all shadow-sm">
+            <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/>
+            </svg>
+            <span id="export-text">Export / Copy Data</span>
           </button>
           <a href="mailto:intelligence@fintechindia.org?subject=Submit Regulatory Sandbox Pilot" class="px-3.5 py-2 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-brand-950 text-xs font-semibold tracking-tight transition-all shadow-sm">
             + Submit Pilot
@@ -148,7 +150,7 @@
         />
       </div>
 
-      <!-- Segment Filter Pills -->
+      <!-- Segment Filter Tabs -->
       <div class="inline-flex p-1 bg-brand-900/90 border border-brand-800/80 rounded-lg text-xs font-medium" id="filter-tabs">
         <button onclick="setFilter('ALL')" class="filter-tab px-3.5 py-1.5 rounded-md text-white bg-brand-800 border border-brand-700/60 font-mono transition-all">All</button>
         <button onclick="setFilter('RBI')" class="filter-tab px-3.5 py-1.5 rounded-md text-slate-400 hover:text-white font-mono transition-all">RBI</button>
@@ -157,7 +159,7 @@
       </div>
     </div>
 
-    <!-- Count Notification -->
+    <!-- Active Filter Counter -->
     <div class="flex justify-between items-center mb-3 text-xs text-slate-400 font-mono">
       <div>Showing <span id="displayed-count" class="text-white font-semibold">0</span> verified regulatory entries</div>
       <div class="text-[11px] text-slate-400">Directly linked to official gazettes</div>
@@ -412,64 +414,35 @@
       renderViews();
     });
 
-    // Native Excel Export Function: Opens clean rows and columns with no raw comma text
-    function downloadExcel() {
-      const tableHTML = `
-        <html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
-        <head>
-          <!--[if gte mso 9]>
-          <xml>
-            <x:ExcelWorkbook>
-              <x:ExcelWorksheets>
-                <x:ExcelWorksheet>
-                  <x:Name>India Tokenization Pilots</x:Name>
-                  <x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions>
-                </x:ExcelWorksheet>
-              </x:ExcelWorksheets>
-            </x:ExcelWorkbook>
-          </xml>
-          <![endif]-->
-          <meta charset="UTF-8">
-        </head>
-        <body style="font-family: Arial, sans-serif;">
-          <h2>India Tokenization & Regulatory Sandbox Radar (Official Ledger)</h2>
-          <table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse; border: 1px solid #cccccc;">
-            <thead>
-              <tr style="background-color: #0D1321; color: #ffffff; font-weight: bold;">
-                <th>ID</th>
-                <th>Project Name</th>
-                <th>Issuer / Sponsor</th>
-                <th>Regulator</th>
-                <th>Asset Type</th>
-                <th>Status</th>
-                <th>Summary</th>
-                <th>Official Circular URL</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${data.map(d => `
-                <tr>
-                  <td>${d.id}</td>
-                  <td><b>${d.projectName}</b></td>
-                  <td>${d.issuer}</td>
-                  <td>${d.regulator}</td>
-                  <td>${d.assetType}</td>
-                  <td>${d.status}</td>
-                  <td>${d.summary}</td>
-                  <td><a href="${d.sourceUrl}">${d.sourceUrl}</a></td>
-                </tr>
-              `).join('')}
-            </tbody>
-          </table>
-        </body>
-        </html>
-      `;
+    // Universal Export: Copies table to clipboard and downloads standards-compliant CSV with UTF-8 BOM
+    function copyOrDownload() {
+      const btnText = document.getElementById('export-text');
+      
+      const headers = "ID\tProject Name\tIssuer / Sponsor\tRegulator\tAsset Type\tStatus\tSummary\tSource Filing\n";
+      const rows = data.map(d => 
+        `${d.id}\t${d.projectName}\t${d.issuer}\t${d.regulator}\t${d.assetType}\t${d.status}\t${d.summary}\t${d.sourceUrl}`
+      ).join('\n');
+      
+      const fullText = headers + rows;
 
-      const blob = new Blob([tableHTML], { type: 'application/vnd.ms-excel' });
+      // Copy to clipboard for instant pasting on phone/desktop
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(fullText).then(() => {
+          btnText.innerText = "Copied to Clipboard! ✓";
+          setTimeout(() => { btnText.innerText = "Export / Copy Data"; }, 2500);
+        }).catch(() => {});
+      }
+
+      // Safe CSV download with UTF-8 Byte Order Mark (\uFEFF)
+      const csvContent = "\uFEFF" + ["ID,Project Name,Issuer,Regulator,Asset Type,Status,Summary,Source URL"].concat(
+        data.map(d => `"${d.id}","${d.projectName}","${d.issuer}","${d.regulator}","${d.assetType}","${d.status}","${d.summary.replace(/"/g, '""')}","${d.sourceUrl}"`)
+      ).join("\n");
+
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.setAttribute('href', url);
-      a.setAttribute('download', 'india-tokenization-regulatory-ledger.xls');
+      a.setAttribute('download', 'india-tokenization-regulatory-ledger.csv');
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
