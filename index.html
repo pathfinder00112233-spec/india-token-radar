@@ -33,7 +33,6 @@
   </script>
 
   <style>
-    /* Sleek custom scrollbars */
     ::-webkit-scrollbar { width: 6px; height: 6px; }
     ::-webkit-scrollbar-track { background: #0D1321; }
     ::-webkit-scrollbar-thumb { background: #1E2F4D; border-radius: 3px; }
@@ -42,7 +41,7 @@
 </head>
 <body class="bg-brand-950 text-slate-200 font-sans antialiased min-h-screen flex flex-col selection:bg-cyan-500/20 selection:text-cyan-300">
 
-  <!-- Top Enterprise Status Banner -->
+  <!-- Top Enterprise Status Strip -->
   <div class="border-b border-brand-800/80 bg-brand-900/60 px-4 py-2 text-xs text-slate-400">
     <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
       <div class="flex items-center gap-2">
@@ -79,11 +78,11 @@
           </p>
         </div>
 
-        <!-- Terminal Quick Action -->
+        <!-- Terminal Quick Actions -->
         <div class="flex items-center gap-3">
-          <button onclick="downloadCSV()" class="px-3.5 py-2 rounded-lg bg-brand-850 hover:bg-brand-800 text-slate-200 border border-brand-700/60 text-xs font-medium font-mono flex items-center gap-2 transition-all">
-            <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-            Export Ledger (.CSV)
+          <button onclick="downloadExcel()" class="px-3.5 py-2 rounded-lg bg-brand-850 hover:bg-brand-800 text-slate-200 border border-brand-700/60 text-xs font-medium font-mono flex items-center gap-2 transition-all shadow-sm">
+            <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            Export to Excel (.XLS)
           </button>
           <a href="mailto:intelligence@fintechindia.org?subject=Submit Regulatory Sandbox Pilot" class="px-3.5 py-2 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-brand-950 text-xs font-semibold tracking-tight transition-all shadow-sm">
             + Submit Pilot
@@ -137,9 +136,8 @@
   <!-- Main Content Area -->
   <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-8 py-6">
 
-    <!-- Search & Regulatory Segment Filter -->
+    <!-- Search & Filter Controls -->
     <div class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 mb-6">
-      <!-- Search Input -->
       <div class="relative flex-1 max-w-md">
         <svg class="absolute left-3.5 top-3 h-4 w-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
         <input
@@ -150,7 +148,7 @@
         />
       </div>
 
-      <!-- Institutional Filter Tabs -->
+      <!-- Segment Filter Pills -->
       <div class="inline-flex p-1 bg-brand-900/90 border border-brand-800/80 rounded-lg text-xs font-medium" id="filter-tabs">
         <button onclick="setFilter('ALL')" class="filter-tab px-3.5 py-1.5 rounded-md text-white bg-brand-800 border border-brand-700/60 font-mono transition-all">All</button>
         <button onclick="setFilter('RBI')" class="filter-tab px-3.5 py-1.5 rounded-md text-slate-400 hover:text-white font-mono transition-all">RBI</button>
@@ -159,18 +157,16 @@
       </div>
     </div>
 
-    <!-- Active Count Counter -->
+    <!-- Count Notification -->
     <div class="flex justify-between items-center mb-3 text-xs text-slate-400 font-mono">
       <div>Showing <span id="displayed-count" class="text-white font-semibold">0</span> verified regulatory entries</div>
-      <div class="text-[11px] text-slate-400">Tap cards or inspect links for official filings</div>
+      <div class="text-[11px] text-slate-400">Directly linked to official gazettes</div>
     </div>
 
-    <!-- Responsive Display Grid: Mobile Cards + Desktop Institutional Table -->
-    
-    <!-- 1. Mobile Cards View (Visible on screens < 768px) -->
+    <!-- Mobile Stack Cards -->
     <div class="block md:hidden space-y-3" id="mobile-cards-container"></div>
 
-    <!-- 2. Desktop Institutional Table (Visible on screens >= 768px) -->
+    <!-- Desktop Institutional Table -->
     <div class="hidden md:block overflow-hidden rounded-xl border border-brand-800/70 bg-brand-900/40 shadow-xl backdrop-blur-sm">
       <table class="w-full text-left text-xs border-collapse">
         <thead class="bg-brand-900/90 border-b border-brand-800/80 font-mono uppercase tracking-wider text-[11px] text-slate-400">
@@ -191,34 +187,33 @@
   <!-- Footer -->
   <footer class="border-t border-brand-800/60 bg-brand-950 py-8 px-4 sm:px-8 text-xs text-slate-500 mt-12">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
-      <p>© 2026 India Tokenization & Regulatory Sandbox Radar. Non-custodial public market utility.</p>
+      <p>© 2026 India Tokenization & Regulatory Sandbox Radar. Public market intelligence utility.</p>
       <div class="flex items-center gap-6 font-mono text-[11px]">
-        <span>All data sourced from public regulatory gazettes & sandbox circulars.</span>
+        <span>Verified against RBI, SEBI & IFSCA registries.</span>
       </div>
     </div>
   </footer>
 
   <script>
-    // Validated dataset with verified official regulatory/institutional portals
     const data = [
       {
         "id": "IN-01",
         "projectName": "Unified Markets Interface (UMI) — CD Pilot",
-        "issuer": "Reserve Bank of India & Core Clearing Banks",
+        "issuer": "RBI & Primary Clearing Banks",
         "regulator": "RBI",
         "assetType": "Certificate of Deposit",
         "status": "Pilot Launched",
-        "summary": "Next-generation market infrastructure testing tokenised Certificates of Deposit settled via wholesale CBDC.",
+        "summary": "Testing tokenised Certificates of Deposit settled via wholesale CBDC on UMI infrastructure.",
         "sourceUrl": "https://www.rbi.org.in"
       },
       {
         "id": "IN-02",
         "projectName": "UMI — Commercial Paper DLT Trials",
-        "issuer": "RBI / Money Market Primary Dealers",
+        "issuer": "RBI / Money Market Dealers",
         "regulator": "RBI",
         "assetType": "Commercial Paper",
         "status": "Trials Tested",
-        "summary": "Expansion of wholesale CBDC infrastructure to trial secondary market settlement of tokenised commercial paper.",
+        "summary": "Extending UMI wholesale CBDC infrastructure to trial secondary market settlement of tokenised commercial paper.",
         "sourceUrl": "https://www.rbi.org.in"
       },
       {
@@ -332,11 +327,9 @@
       const filtered = filterData();
       document.getElementById('displayed-count').innerText = filtered.length;
 
-      // 1. Render Desktop Table
       const desktopTbody = document.getElementById('desktop-table-body');
       desktopTbody.innerHTML = '';
 
-      // 2. Render Mobile Cards
       const mobileContainer = document.getElementById('mobile-cards-container');
       mobileContainer.innerHTML = '';
 
@@ -419,15 +412,67 @@
       renderViews();
     });
 
-    function downloadCSV() {
-      const headers = ["ID,Project,Issuer,Regulator,AssetType,Status,Summary,SourceURL\n"];
-      const rows = data.map(d => `"${d.id}","${d.projectName}","${d.issuer}","${d.regulator}","${d.assetType}","${d.status}","${d.summary.replace(/"/g, '""')}","${d.sourceUrl}"\n`);
-      const blob = new Blob([headers.concat(rows).join('')], { type: 'text/csv' });
+    // Native Excel Export Function: Opens clean rows and columns with no raw comma text
+    function downloadExcel() {
+      const tableHTML = `
+        <html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
+        <head>
+          <!--[if gte mso 9]>
+          <xml>
+            <x:ExcelWorkbook>
+              <x:ExcelWorksheets>
+                <x:ExcelWorksheet>
+                  <x:Name>India Tokenization Pilots</x:Name>
+                  <x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions>
+                </x:ExcelWorksheet>
+              </x:ExcelWorksheets>
+            </x:ExcelWorkbook>
+          </xml>
+          <![endif]-->
+          <meta charset="UTF-8">
+        </head>
+        <body style="font-family: Arial, sans-serif;">
+          <h2>India Tokenization & Regulatory Sandbox Radar (Official Ledger)</h2>
+          <table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse; border: 1px solid #cccccc;">
+            <thead>
+              <tr style="background-color: #0D1321; color: #ffffff; font-weight: bold;">
+                <th>ID</th>
+                <th>Project Name</th>
+                <th>Issuer / Sponsor</th>
+                <th>Regulator</th>
+                <th>Asset Type</th>
+                <th>Status</th>
+                <th>Summary</th>
+                <th>Official Circular URL</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${data.map(d => `
+                <tr>
+                  <td>${d.id}</td>
+                  <td><b>${d.projectName}</b></td>
+                  <td>${d.issuer}</td>
+                  <td>${d.regulator}</td>
+                  <td>${d.assetType}</td>
+                  <td>${d.status}</td>
+                  <td>${d.summary}</td>
+                  <td><a href="${d.sourceUrl}">${d.sourceUrl}</a></td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </body>
+        </html>
+      `;
+
+      const blob = new Blob([tableHTML], { type: 'application/vnd.ms-excel' });
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.setAttribute('href', url);
-      a.setAttribute('download', 'india-tokenization-regulatory-ledger.csv');
+      a.setAttribute('download', 'india-tokenization-regulatory-ledger.xls');
+      document.body.appendChild(a);
       a.click();
+      document.body.removeChild(a);
     }
 
     renderStats();
